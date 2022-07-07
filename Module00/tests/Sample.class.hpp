@@ -6,8 +6,8 @@ class Sample
 	public:
 
 		char	a1;
-		char	a2;
-		char	a3;
+		int		a2;
+		float	a3;
 
 		Sample (char p1, int p2, float p3);
 		~Sample (void);

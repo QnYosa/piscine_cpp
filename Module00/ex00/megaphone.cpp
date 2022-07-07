@@ -1,37 +1,17 @@
-#include <stdio.h>
+#include	<iostream>
 
-int nbr = 36;
-
-namespace	Megaphone
+int	main(int argc, char **argv)
 {
-	int	nbr = 13;
-
-	int	f(void)
+	if (argc < 2)
 	{
-		printf("ah mdr\n");
-		return 6;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (0);
 	}
-}
-
-namespace	bot
-{
-	int nbr = 25;
-
-	int f(void)
+	for (int i = 1; argv[i]; i++)
 	{
-		printf("bip... bip...\n");
-		return (-3);
+		for(int j = 0; argv[i][j]; j++)
+			std::cout << (char)toupper(argv[i][j]);
+		std::cout << std::endl;
 	}
-}
-
-namespace	Robot = bot;
-
-int main (void)
-{
-	printf("salut s1 = %d\n", Megaphone::nbr);
-	printf("f return %d\n", Megaphone::f());
-	printf("salut s1 = %d\n", bot::nbr);
-	printf("bot::bot renvoie %d\n", bot::f());
-	printf("ceci fait augure de teste %d\n", ::nbr);
-	printf("salut robot %d\n", Robot::f());
+	return (0);
 }
