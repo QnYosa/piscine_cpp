@@ -1,9 +1,9 @@
 #include "Contacts.hpp"
 #include	<iostream>
 
-Contacts::Contacts(/* args */)
+Contacts::Contacts()
 {
-	std::cout << "Contacto criado" << std::endl;	
+	// std::cout << "Contacto criado" << std::endl;
 }
 
 Contacts::~Contacts()

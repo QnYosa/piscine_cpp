@@ -1,19 +1,22 @@
 #ifndef CONTACTS_H
 # define CONTACTS_H
+#include	<string>
 
 class Contacts
 {
 private:
 	/* data */
 public:
-	Contacts(/* args */);
+	Contacts();
 	~Contacts();
 
-	char	*firstname;
-	char	*last_name;
-	char	*nickname;
-	char	*number;
-	char	*darkest_secret;
+	std::string	firstname;
+	std::string	lastname;
+	std::string	nickname;
+	std::string	number;
+	std::string	darkest_secret;
+
+
 };
 
 #endif
