@@ -4,11 +4,29 @@
 #include	<string.h>
 #include	<string>
 #include 	<iomanip>
+
 #define 	LIMIT 2
 
-int check_getline(std::string s)
+std::string check_getline()
 {
-	return (s.empty());
+	std::string s;
+	std::getline(std::cin, s);
+	if (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin.ignore();
+		exit(0);
+	}
+	return (s);
+}
+
+int	is_just_number(std::string s)
+{
+	char *string_just_number = strcpy(string_just_number, s.c_str());
+	for(int i = 0; string_just_number[i]; i++)
+		if (!isdigit(string_just_number[i]))
+			return (-1);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -23,31 +41,23 @@ int	main(int argc, char **argv)
 	while (1)
 	{
 		std::cout << "Command ?" << std::endl;
-		std::string s;
-		std::getline(std::cin, s);
-		// std::cin >> s;
-		// std::cout << s << std::endl;
-		// return (0);
-		// if (s.empty())
-		// 	return (0);
+		std::string s = check_getline();
+		if (s == "ADD")
 		{
-			if (s == "ADD")
+			ph_book.add(datas, 1, &ph_book);
+			if (datas[0] == LIMIT)
 			{
-				ph_book.add(datas, 1, &ph_book);
-				if (datas[0] == LIMIT)
-				{
-					datas[1]++;
-					if (datas[1] == LIMIT)
-						datas[1] = 0;
-				}
-				if (datas[0] < LIMIT)
-					datas[0]++;
+				datas[1]++;
+				if (datas[1] == LIMIT)
+					datas[1] = 0;
 			}
-			else if (s == "SEARCH")
-				ph_book.search(datas, &ph_book);
-			else if (s == "EXIT")
-				exit(0);
+			if (datas[0] < LIMIT)
+				datas[0]++;
 		}
+		else if (s == "SEARCH")
+			ph_book.search(datas, &ph_book);
+		else if (s == "EXIT")
+			exit(0);
 	}
 	return (0);
 }

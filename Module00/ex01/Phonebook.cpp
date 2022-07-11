@@ -1,9 +1,11 @@
 #include	<iostream>
 #include 	"Phonebook.hpp"
+#include	"main.hpp"
 #include	<string>
 #include	<string.h>
 #include 	<iomanip>
-# define	LIMIT 2
+
+# define	LIMIT 7
 
 Phonebook::Phonebook(/* args */)
 {
@@ -13,12 +15,7 @@ Phonebook::~Phonebook()
 {
 }
 
-void	Phonebook::show_num(Phonebook t)
-{
-	std::cout << t.num << std::endl;
-}
-
-int		Phonebook::check_number(char *number)
+int		Phonebook::check_number(std::string number)
 {
 	for(int i = 0; number[i]; i++)
 	{
@@ -43,41 +40,48 @@ int		Phonebook::add(int datas[2], int step, Phonebook *ph_book)
 		if (step == 1)
 		{
 			std::cout << "Nome do seu amigo" << std::endl;
-			std::cin >> ph_book->tab[index].firstname;
+			this->tab[index].setFirstname();
 			step++;
 		}
 		if (step == 2)
 		{
 			std::cout << "Apelido do seu amigo" << std::endl;
-			std::cin >> ph_book->tab[index].lastname;
+			this->tab[index].setLastname();
 			step++;
 		}
 		if (step == 3)	
 		{
 			std::cout << "Sobrenome do seu amigo" << std::endl;
-			std::cin >> ph_book->tab[index].nickname;
+			this->tab[index].setNickname();
 			step++;
 		}
 		if (step == 4)
 		{
 			std::cout << "Numero ?" << std::endl;
-			std::cin >> ph_book->tab[index].number;
-			char number[ph_book->tab[index].number.length() + 1];
-			strcpy(number, ph_book->tab[index].number.c_str());
-			if (!check_number(number))
+			this->tab[index].setNumber();
+			if (!check_number(this->tab[index].getNumber()))
 				step++;
 		}
 		if (step == 5)
 		{
 			std::cout  << "Darkest Secret ?" << std::endl;
-			std::cin >> ph_book->tab[index].darkest_secret;
+			this->tab[index].setDarkestSecret();
 			step++;
 		}
 	}
 	return (0);
 }
 
-void	Phonebook::search(int datas[2], Phonebook *ph_book)
+void	Phonebook::prompt_search(Phonebook *ph_book, int index)
+{
+	std::cout << "Firstname :" << this->tab[index].getFirstname() << std::endl;
+	std::cout << "Lastname :" << this->tab[index].getLastname() << std::endl;
+	std::cout << "Nickname :" << this->tab[index].getNickname() << std::endl;
+	std::cout << "Number :" << this->tab[index].getNumber() << std::endl;
+	std::cout << "Darkest Secret :" << this->tab[index].getDarkestSecret() << std::endl;
+}
+
+void	Phonebook::prompt_contacts(int datas[2])
 {
 	std::cout << std::setfill(' ') << std::setw(30) << std::right << "CONTACTS" << std::endl;
 	std::cout << std::setfill(' ') << std::setw(10) << "Index" << " | ";
@@ -87,26 +91,25 @@ void	Phonebook::search(int datas[2], Phonebook *ph_book)
 	for (int i = 0; i < datas[0]; i++)
 	{
 		std::cout << std::setfill(' ') << std::setw(10) << i << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << ph_book->tab[i].firstname << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << ph_book->tab[i].lastname << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << ph_book->tab[i].nickname << " | " << std::endl;
+		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getFirstname() << " | ";
+		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getLastname() << " | ";
+		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getNickname() << " | " << std::endl;
 	}
+}
+
+void	Phonebook::search(int datas[2], Phonebook *ph_book)
+{
+	prompt_contacts(datas);
 	if (datas[0] == 0)
 		return ;
 	std::cout << "Index do contacto" << std::endl;
-	std::string s;
-	std::cin >> s; //NE MATCHE PAS AVEC UN INT 
+	std::string s = check_getline();
+	while (is_just_number(s))
+		std::string s = check_getline();
 	int index = std::stoi(s, nullptr, 10);
-	// error messages if letters ou numero superieur a 7
+	if (index == 0)
+		prompt_search(ph_book, index);
 	for(int i = 0; i < index; i++)
-	{
 		if (i == index)
-		{
-			std::cout << "Firstname :" << ph_book->tab[index].firstname << std::endl;
-			std::cout << "Lastname :" << ph_book->tab[index].lastname << std::endl;
-			std::cout << "Nickname :" << ph_book->tab[index].nickname << std::endl;
-			std::cout << "Number :" << ph_book->tab[index].number << std::endl;
-			std::cout << "Darkest Secret :" << ph_book->tab[index].darkest_secret << std::endl;
-		}
-	}
+			prompt_search(ph_book, index);
 }

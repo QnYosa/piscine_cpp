@@ -1,20 +1,37 @@
 #ifndef CONTACTS_H
 # define CONTACTS_H
-#include	<string>
 
+#include <iostream>
+#include "main.hpp"
 class Contacts
 {
 private:
-	/* data */
+	std::string	_firstname;
+	std::string	_lastname;
+	std::string	_nickname;
+	std::string	_number;
+	std::string	_darkest_secret;
+
 public:
 	Contacts();
 	~Contacts();
+	int			getFoo(void);
+	void		setFoo(int); 
+	int			getName(std::string d)const;
+	std::string	setName(int step, int index) const ;
+	std::string setInfos(int step, int index) const ;
+	void 		setFirstname();
+	void 		setLastname();
+	void 		setNickname();
+	void 		setNumber();
+	void 		setDarkestSecret();
+	std::string	getFirstname(void);
+	std::string	getLastname(void);
+	std::string	getNickname(void);
+	std::string	getNumber(void);
+	std::string	getDarkestSecret(void);
 
-	std::string	firstname;
-	std::string	lastname;
-	std::string	nickname;
-	std::string	number;
-	std::string	darkest_secret;
+	int			returnLength();
 };
 
 #endif
