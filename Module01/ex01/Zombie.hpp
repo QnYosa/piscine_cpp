@@ -1,16 +1,16 @@
 #ifndef ZOMBIE_H
 # define ZOMBIE_H
+# define SIZE_HORDE 4
 
 #include <iostream>
 #include <string>
-#define SIZE_HORDE 4
 
 class Zombie
 {
 	private:
 	std::string _name;
 	public:
-	Zombie(/* args */);
+	Zombie();
 	~Zombie();
 	std::string	getName(void);
 	void		setName(std::string name);
