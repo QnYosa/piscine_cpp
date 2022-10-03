@@ -28,7 +28,7 @@ int		Phonebook::check_number(std::string number)
 	return (0);
 }
 
-int		Phonebook::add(int datas[2], int step, Phonebook *ph_book)
+int		Phonebook::add(int datas[2], int step)
 {
 	int	index;
 
@@ -72,7 +72,7 @@ int		Phonebook::add(int datas[2], int step, Phonebook *ph_book)
 	return (0);
 }
 
-void	Phonebook::prompt_search(Phonebook *ph_book, int index)
+void	Phonebook::prompt_search(int index)
 {
 	std::cout << "Firstname :" << this->tab[index].getFirstname() << std::endl;
 	std::cout << "Lastname :" << this->tab[index].getLastname() << std::endl;
@@ -97,7 +97,7 @@ void	Phonebook::prompt_contacts(int datas[2])
 	}
 }
 
-void	Phonebook::search(int datas[2], Phonebook *ph_book)
+void	Phonebook::search(int datas[2])
 {
 	prompt_contacts(datas);
 	if (datas[0] == 0)
@@ -108,8 +108,8 @@ void	Phonebook::search(int datas[2], Phonebook *ph_book)
 		std::string s = check_getline();
 	int index = std::stoi(s, nullptr, 10);
 	if (index == 0)
-		prompt_search(ph_book, index);
+		this->prompt_search(index);
 	for(int i = 0; i < index; i++)
 		if (i == index)
-			prompt_search(ph_book, index);
+			this->prompt_search(index);
 }

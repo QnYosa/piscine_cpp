@@ -1,12 +1,12 @@
-NAME	=	ex00
+NAME = ex01
 
-SRCS	=	megaphone.cpp
+SRCS = main.cpp Contacts.cpp Phonebook.cpp
 
-OBJS	= ${SRCS:.cpp=.o}
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-CPPFLAGS	=	-Wall -Werror -Wextra -std=c++98
+OBJS = ${SRCS:.cpp=.o}
 
-RM			=	rm -f
+RM = rm -f
 
 all: $(NAME)
 
@@ -15,7 +15,6 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) *.o
-
 fclean: clean
 	$(RM) $(NAME)
 

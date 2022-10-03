@@ -12,9 +12,9 @@ class Weapon
 		std::string _type;
 		/* data */
 	public:
-		Weapon(std::string type);
+		Weapon(std::string s);
 		~Weapon();
-		std::string& getType(void); // esperluette ? 
+		std::string& getType(void);
 		void setType(std::string);
 
 };

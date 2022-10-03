@@ -22,14 +22,15 @@ std::string check_getline()
 
 int	is_just_number(std::string s)
 {
-	char *string_just_number = strcpy(string_just_number, s.c_str());
+	char *string_just_number = NULL;
+	string_just_number = strcpy(string_just_number, s.c_str());
 	for(int i = 0; string_just_number[i]; i++)
 		if (!isdigit(string_just_number[i]))
 			return (-1);
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	Phonebook	ph_book;
 	int			datas[2];
@@ -44,7 +45,7 @@ int	main(int argc, char **argv)
 		std::string s = check_getline();
 		if (s == "ADD")
 		{
-			ph_book.add(datas, 1, &ph_book);
+			ph_book.add(datas, 1);
 			if (datas[0] == LIMIT)
 			{
 				datas[1]++;
@@ -55,7 +56,7 @@ int	main(int argc, char **argv)
 				datas[0]++;
 		}
 		else if (s == "SEARCH")
-			ph_book.search(datas, &ph_book);
+			ph_book.search(datas);
 		else if (s == "EXIT")
 			exit(0);
 	}

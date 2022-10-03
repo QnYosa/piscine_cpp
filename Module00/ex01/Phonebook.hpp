@@ -10,10 +10,10 @@ class Phonebook
 	public:
 		Phonebook();
 		~Phonebook();
-		int			add(int datas[2], int step, Phonebook *ph_book);
+		int			add(int datas[2], int step);
 		int 		check_number(std::string number);
-		void		search(int datas[2], Phonebook *ph_book);
-		void		prompt_search(Phonebook *ph_book, int index);
+		void		search(int datas[2]);
+		void		prompt_search(int index);
 		void		prompt_contacts(int datas[2]);
 };
 
