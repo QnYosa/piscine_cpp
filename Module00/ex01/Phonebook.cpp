@@ -90,7 +90,7 @@ void	Phonebook::prompt_contacts(int datas[2])
 	}
 }
 
-void	Phonebook::search(int datas[LIMIT])
+void	Phonebook::search(int datas[2])
 {
 	prompt_contacts(datas);
 	if (datas[0] == 0)

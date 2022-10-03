@@ -33,5 +33,5 @@ class Contacts
 
 		int			returnLength();
 };
-
+	int		is_only_spaces(std::string const & str);
 #endif

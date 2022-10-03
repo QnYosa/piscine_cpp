@@ -41,7 +41,7 @@ int	main(void)
 			if (datas[0] == LIMIT)
 			{
 				datas[1]++;
-				if (datas[1] == LIMIT)
+				if (datas[1] == LIMIT) // si c'est le dernier 
 					datas[1] = 0;
 			}
 			if (datas[0] < LIMIT)

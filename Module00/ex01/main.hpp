@@ -9,6 +9,7 @@
 #include 	<iomanip>
 #include	<stdlib.h>
 #include 	<stdio.h>
+#include 	<locale>
 # define	LIMIT 2
 
 std::string check_getline();
