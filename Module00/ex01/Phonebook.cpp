@@ -96,6 +96,7 @@ void	Phonebook::search(int datas[2])
 	if (datas[0] == 0)
 		return ;
 	std::cout << "Index do contacto" << std::endl;
+	// 
 	std::string s = check_getline();
 	while (is_just_number(s))
 		std::string s = check_getline();
