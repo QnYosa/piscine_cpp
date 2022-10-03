@@ -7,8 +7,9 @@
 
 class ScavTrap : public ClapTrap
 {
-	public:
+	private:
 		ScavTrap(/* args */);
+	public:
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const & src);
 		~ScavTrap();
