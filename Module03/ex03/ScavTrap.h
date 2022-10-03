@@ -10,7 +10,7 @@ class ScavTrap : virtual public ClapTrap
 	protected:
 		ScavTrap(/* args */);
 	public:
-		ScavTrap(std::string name);
+		ScavTrap(std::string & name);
 		ScavTrap(ScavTrap const & src);
 		~ScavTrap();
 		ScavTrap &	operator=(ScavTrap const & src);

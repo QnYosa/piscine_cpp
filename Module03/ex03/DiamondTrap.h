@@ -11,14 +11,13 @@ private:
 	std::string	_name;
 	/* data */
 public:
-	DiamondTrap(std::string name);
+	DiamondTrap(std::string & name);
 	DiamondTrap(DiamondTrap const & src);
 	~DiamondTrap();
 	DiamondTrap	&	operator=(DiamondTrap const & src);
+	std::string getName();
+	void setName();
+	void	attack(std::string const & name);
 };
-
-
-
-
 
 #endif

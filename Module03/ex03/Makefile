@@ -4,7 +4,7 @@ SRCS		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
-CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -g#-fsanitize=address
 
 RM 			= rm -f
 
@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 	c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	$(RM)*.o
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

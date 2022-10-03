@@ -18,6 +18,10 @@ FragTrap::~FragTrap()
 FragTrap::FragTrap(std::string & name) :ClapTrap(name)
 {
 	std::cout << "FragTrap Parameter Constructor" << std::endl;
+	this->_name = name;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 void	FragTrap::highFivesGuys()
@@ -35,4 +39,25 @@ FragTrap &	FragTrap::operator=(FragTrap const & src)
 		this->_attackDamage = src._attackDamage;
 	}
 	return (*this);
+}
+
+void		FragTrap::attack(std::string const & src)
+{
+	if (_hitPoints <= 0)
+	{
+		std::cout << _name << " is dead" << std::endl;
+	}
+	else if (_energyPoints <= 0)
+	{
+		std::cout << _name << " is out of energy" << std::endl;
+	}
+	else
+	{
+		std::cout << _name << " attacks with FragTrap attack " \
+		<< src << ", causing " << getAttackDamage()\
+		<< " points of damage" << std::endl \
+		<< _name << " lose 1 Energy point" << std::endl;
+		lostEnergy();
+		displayClaptTrap();
+	}
 }

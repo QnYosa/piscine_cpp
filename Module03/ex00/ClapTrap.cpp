@@ -1,27 +1,32 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap():_name(0), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap():_name("Unknown"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
+	std::cout << "ClapTrap default constructor" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string & name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
+	std::cout << "ClapTrap parameter constructor" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
-	*this = src;
+	std::cout << "ClapTrap Copy constructor" << std::endl; 
+	this->_name = src._name;
+	this->_hitPoints = src._hitPoints;
+	this->_energyPoints = src._energyPoints;
+	this->_attackDamage = src._attackDamage;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 {
 	if (this != &src)
 	{
-		*this = src;
-		_name = *(&src._name);
-		_hitPoints = *(&src._hitPoints);
-		_energyPoints = *(&src._energyPoints);
-		_attackDamage = *(&src._attackDamage);
+		this->_name = *(&src._name);
+		this->_hitPoints = *(&src._hitPoints);
+		this->_energyPoints = *(&src._energyPoints);
+		this->_attackDamage = *(&src._attackDamage);
 	}
 	return (*this);
 }

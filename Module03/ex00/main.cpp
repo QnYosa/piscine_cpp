@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	std::string jediName = "Obiwan";
+	std::string jediName = "";
 	std::string sithName = "Darth Vader";
 	ClapTrap jedi(jediName);
 	ClapTrap sith(sithName);

@@ -1,6 +1,6 @@
 #include "ClapTrap.h"
 
-ClapTrap::ClapTrap():_name(0), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap():_name("Unknown"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap default constructor" << std::endl;
 }
@@ -23,7 +23,6 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 {
 	if (this != &src)
 	{
-		// *this = src; // pas sur vur la duree de vie de la variable; 
 		_name = *(&src._name);
 		_hitPoints = *(&src._hitPoints);
 		_energyPoints = *(&src._energyPoints);
@@ -69,7 +68,7 @@ void		ClapTrap::attack(const std::string& target)
 	}
 	else
 	{
-		std::cout << _name << " attacks " \
+		std::cout << _name << " attacks with ClapTrap attack" \
 		<< target << ", causing " << getAttackDamage()\
 		<< "points of damage" << std::endl \
 		<< _name << " lose 1 Energy point" << std::endl;

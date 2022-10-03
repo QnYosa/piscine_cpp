@@ -1,11 +1,11 @@
-#include "ScavTrap.h"
+#include "DiamondTrap.h"
 
 int main(void)
 {
-	std::string		jName = "Yoda";
-	std::string		sName = "Palpatine";
-	ScavTrap		jedi(jName);
-	ScavTrap		sith(sName);
+	std::string 	njoz = "Joz";
+	DiamondTrap		joz(njoz);
 	// ScavTrap		clone; proteger les nameless
+	std::cout << joz.getName() << std::endl;
+	std::cout << joz.getHitPoints() << std::endl;
 	return (0);
 }
