@@ -1,11 +1,4 @@
-#include	<iostream>
-#include 	"Phonebook.hpp"
 #include	"main.hpp"
-#include	<string>
-#include	<string.h>
-#include 	<iomanip>
-
-# define	LIMIT 7
 
 Phonebook::Phonebook(/* args */)
 {
@@ -97,7 +90,7 @@ void	Phonebook::prompt_contacts(int datas[2])
 	}
 }
 
-void	Phonebook::search(int datas[2])
+void	Phonebook::search(int datas[LIMIT])
 {
 	prompt_contacts(datas);
 	if (datas[0] == 0)
@@ -106,7 +99,7 @@ void	Phonebook::search(int datas[2])
 	std::string s = check_getline();
 	while (is_just_number(s))
 		std::string s = check_getline();
-	int index = std::stoi(s, nullptr, 10);
+	int index = std::atoi(s.c_str());
 	if (index == 0)
 		this->prompt_search(index);
 	for(int i = 0; i < index; i++)

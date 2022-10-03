@@ -2,7 +2,7 @@ NAME = ex01
 
 SRCS = main.cpp Contacts.cpp Phonebook.cpp
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 OBJS = ${SRCS:.cpp=.o}
 
