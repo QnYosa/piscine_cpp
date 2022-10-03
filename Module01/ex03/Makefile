@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 	c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
