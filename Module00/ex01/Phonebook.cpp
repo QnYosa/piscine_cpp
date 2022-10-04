@@ -96,14 +96,13 @@ void	Phonebook::search(int datas[2])
 	if (datas[0] == 0)
 		return ;
 	std::cout << "Index do contacto" << std::endl;
-	// 
 	std::string s = check_getline();
-	while (is_just_number(s))
+	while (is_just_number(s) < 0)
 		std::string s = check_getline();
 	int index = std::atoi(s.c_str());
 	if (index == 0)
 		this->prompt_search(index);
-	for(int i = 0; i < index; i++)
-		if (i == index)
-			this->prompt_search(index);
+	printf("index = %d", index);
+	std::cout << "Firstname :" << this->tab[index].getFirstname() << std::endl;
+	this->prompt_search(index);
 }
