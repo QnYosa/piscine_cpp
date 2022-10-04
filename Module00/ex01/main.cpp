@@ -16,8 +16,6 @@ std::string check_getline()
 
 int	is_just_number(std::string s)
 {
-	// char *string_just_number = NULL;
-	// string_just_number = strcpy(string_just_number, s.c_str());
 	for(int i = 0; s.c_str()[i]; i++)
 		if (!isdigit(s.c_str()[i]))
 			return (-1);

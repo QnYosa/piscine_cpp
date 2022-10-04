@@ -17,4 +17,6 @@ class Phonebook
 		void		prompt_contacts(int datas[2]);
 };
 
+std::string			addDot(std::string string);
+
 #endif

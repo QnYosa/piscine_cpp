@@ -30,7 +30,6 @@ class Contacts
 		std::string	getNickname(void);
 		std::string	getNumber(void);
 		std::string	getDarkestSecret(void);
-
 		int			returnLength();
 };
 	int		is_only_spaces(std::string const & str);

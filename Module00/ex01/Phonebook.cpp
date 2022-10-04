@@ -76,17 +76,17 @@ void	Phonebook::prompt_search(int index)
 
 void	Phonebook::prompt_contacts(int datas[2])
 {
-	std::cout << std::setfill(' ') << std::setw(30) << std::right << "CONTACTS" << std::endl;
-	std::cout << std::setfill(' ') << std::setw(10) << "Index" << " | ";
-	std::cout << std::setfill(' ') << std::setw(10) << "Firstname" << " | ";
-	std::cout << std::setfill(' ') << std::setw(10) << "Lastname" << " | ";
-	std::cout << std::setfill(' ') << std::setw(10) << "Nickname" << " | " << std::endl;
+	std::cout << std::setw(30) << std::right << "CONTACTS" << std::endl;
+	std::cout << addDot("Index") << "|";
+	std::cout << addDot("Firstname") << "|";
+	std::cout << addDot("Lastname") << "|";
+	std::cout << addDot("Nickname") << "|" << std::endl;
 	for (int i = 0; i < datas[0]; i++)
 	{
-		std::cout << std::setfill(' ') << std::setw(10) << i << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getFirstname() << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getLastname() << " | ";
-		std::cout << std::setfill(' ') << std::setw(10) << this->tab[i].getNickname() << " | " << std::endl;
+		std::cout << "         " << i << "|";
+		std::cout << addDot(this->tab[i].getFirstname()) << "|";
+		std::cout << addDot(this->tab[i].getLastname()) << "|";
+		std::cout << addDot(this->tab[i].getNickname()) << "|" << std::endl;
 	}
 }
 
@@ -98,11 +98,25 @@ void	Phonebook::search(int datas[2])
 	std::cout << "Index do contacto" << std::endl;
 	std::string s = check_getline();
 	while (is_just_number(s) < 0)
-		std::string s = check_getline();
+	{
+		std::cout << "Index do contacto" << std::endl;
+		s = check_getline();
+	}
 	int index = std::atoi(s.c_str());
-	if (index == 0)
-		this->prompt_search(index);
-	printf("index = %d", index);
-	std::cout << "Firstname :" << this->tab[index].getFirstname() << std::endl;
 	this->prompt_search(index);
+}
+
+std::string	addDot(std::string string)
+{
+	// int len = (string.length() >= 10) ? 9 : 10;
+	int spaces = 10 - string.length();
+	for (int i = 0; i < spaces; i++)
+		std::cout << " ";
+	if (string.length() > 10)
+	{
+		std::cout << string.substr(0, 9);
+		return (".");
+	}
+	else
+		return (string);
 }
