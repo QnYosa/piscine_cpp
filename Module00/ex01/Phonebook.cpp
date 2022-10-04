@@ -67,6 +67,8 @@ int		Phonebook::add(int datas[2], int step)
 
 void	Phonebook::prompt_search(int index)
 {
+	if (index > 7)
+		return ;
 	std::cout << "Firstname :" << this->tab[index].getFirstname() << std::endl;
 	std::cout << "Lastname :" << this->tab[index].getLastname() << std::endl;
 	std::cout << "Nickname :" << this->tab[index].getNickname() << std::endl;

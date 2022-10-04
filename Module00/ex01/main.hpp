@@ -10,7 +10,7 @@
 #include	<stdlib.h>
 #include 	<stdio.h>
 #include 	<locale>
-# define	LIMIT 2
+# define	LIMIT 8
 
 std::string check_getline();
 int	is_just_number(std::string s);

@@ -3,7 +3,7 @@
 
 #include "Animal.hpp"
 
-class Cat : virtual Animal
+class Cat : public Animal
 {
 private:
 	/* data */
