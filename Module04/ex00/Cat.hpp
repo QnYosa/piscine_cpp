@@ -13,6 +13,7 @@ public:
 	Cat(Cat const & src);
 	Cat & 	operator=(Cat const & src);
 	~Cat();
+	std::string	getType()const;
 };
 
 
