@@ -3,7 +3,6 @@
 Cat::Cat(/* args */):Animal("Cat")
 {
 	std::cout << "Cat default constructor" << std::endl;
-	this->_type = "Cat";
 }
 
 Cat::Cat(Cat const & src)
@@ -11,6 +10,7 @@ Cat::Cat(Cat const & src)
 	std::cout << "Cat copy constructor" << std::endl;
 	*this = src;
 }
+
 
 Cat::~Cat()
 {
@@ -20,11 +20,11 @@ Cat::~Cat()
 Cat & Cat::operator=(Cat const & src)
 {
 	if (this != &src)
-		this->_type = src._type;
+		this->setType(src.getType());
 	return (*this);
 }
 
-std::string	Cat::getType()const
+void		Cat::makeSound()const
 {
-	return (this->_type);
+	std::cout << "MEOW" << std::endl;
 }

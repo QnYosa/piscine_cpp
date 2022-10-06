@@ -3,7 +3,6 @@
 Dog::Dog(/* args */):Animal("Dog")
 {
 	std::cout << "Dog default constructor" << std::endl;
-	this->_type = "Dog";
 }
 
 Dog::Dog(Dog const & src)
@@ -20,11 +19,11 @@ Dog::~Dog()
 Dog &	Dog::operator=(Dog const & src)
 {
 	if (this != &src)
-		this->_type = src._type;
+		this->setType(src.getType());
 	return (*this);
 }
 
-std::string	Dog::getType()const
+void		Dog::makeSound()const
 {
-	return (this->_type);
+	std::cout << "WAF WAF" << std::endl;
 }

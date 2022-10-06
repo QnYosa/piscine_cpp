@@ -7,13 +7,12 @@ class Dog : public Animal
 {
 private:
 	/* data */
-	std::string	_type;
 public:
 	Dog(/* args */);
 	Dog(Dog const & src);
 	Dog & operator=(Dog const & src);
 	~Dog();
-	std::string	getType()const;
+	void		makeSound()const;
 };
 
 

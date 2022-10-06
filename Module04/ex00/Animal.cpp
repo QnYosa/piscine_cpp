@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal(/* args */):_type("Stupid Animal")
+Animal::Animal(/* args */):_type("Who Cares?")
 {
 	std::cout << "Animal default constructor" << std::endl;
 }
@@ -12,9 +12,9 @@ Animal::Animal(Animal const & src)
 	*this = src;
 }
 
-Animal::Animal(std::string const & type): _type(type)
+Animal::Animal(std::string const & type):_type(type)
 {
-	std::cout << "Animal parameter constructor" << std::endl;
+	std::cout << "Animal Parameter Constructor" << std::endl;
 }
 
 Animal::~Animal()
@@ -34,12 +34,7 @@ std::string Animal::getType()const
 	return (this->_type);
 }
 
-void		Animal::makeSound()const
+void		Animal::setType(std::string const & type)
 {
-	if (this->_type == "Cat")
-		std::cout << "Meow" << std::endl;
-	else if (this->_type == "Dog")
-		std::cout << "Waf Waf" << std::endl;
-	else
-		std::cout << "???" << std::endl;
+	this->_type = type;
 }
