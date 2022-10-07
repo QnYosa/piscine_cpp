@@ -1,0 +1,34 @@
+#include "Dog.hpp"
+
+Dog::Dog(/* args */):Animal("Dog")
+{
+	std::cout << "Dog default constructor" << std::endl;
+	_attribute = new Brain();
+}
+
+Dog::Dog(Dog const & src)
+{
+	std::cout << "Dog copy constructor" << std::endl;
+	*this = src;
+}
+
+Dog::~Dog()
+{
+	std::cout << "Dog destructor" << std::endl;
+	delete[] _attribute;
+}
+
+Dog &	Dog::operator=(Dog const & src)
+{
+	if (this != &src)
+	{
+		this->setType(src.getType());
+		this->_attribute = src._attribute;
+	}
+	return (*this);
+}
+
+void		Dog::makeSound()const
+{
+	std::cout << "WAF WAF" << std::endl;
+}

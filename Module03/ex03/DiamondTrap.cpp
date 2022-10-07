@@ -5,7 +5,7 @@ DiamondTrap::DiamondTrap(/* args */)
 	std::cout << "DiamondTrap default Constructor" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string & name):ClapTrap(name), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string & name): ClapTrap(name), ScavTrap(name), FragTrap(name)
 {
 	std::cout << "DiamondTrap parameter Constructor" << std::endl;
 	this->_name = name;
