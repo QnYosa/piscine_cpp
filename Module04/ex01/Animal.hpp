@@ -4,8 +4,7 @@
 
 class Animal
 {
-	private:
-		/* data */
+	protected:
 		std::string	_type;
 	public:
 		Animal(/* args */);
@@ -16,6 +15,8 @@ class Animal
 		std::string		getType()const;
 		void			setType(std::string const & type);
 		virtual void	makeSound()const;
+		virtual void 	getIdeas()const;
+		virtual void	setIdea(std::string const & idea);
 };
 
 #endif

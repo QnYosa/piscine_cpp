@@ -12,9 +12,12 @@ class Cat: public Animal
 	public:
 		Cat(/* args */);
 		Cat(Cat const & src);
-		Cat & 	operator=(Cat const & src);
+		Cat & 						operator=(Cat const & src);
 		~Cat();
-		void		makeSound()const;
+		void						makeSound()const;
+		std::string*				getAttribute()const;
+		virtual void				getIdeas()const;
+		virtual void				setIdea(std::string const & idea);
 };
 
 

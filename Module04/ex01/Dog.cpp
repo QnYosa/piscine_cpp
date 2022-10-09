@@ -15,7 +15,7 @@ Dog::Dog(Dog const & src)
 Dog::~Dog()
 {
 	std::cout << "Dog destructor" << std::endl;
-	delete[] _attribute;
+	delete _attribute;
 }
 
 Dog &	Dog::operator=(Dog const & src)
@@ -31,4 +31,19 @@ Dog &	Dog::operator=(Dog const & src)
 void		Dog::makeSound()const
 {
 	std::cout << "WAF WAF" << std::endl;
+}
+
+std::string*		Dog::getAttribute()const
+{
+	return (this->_attribute->getIdeas());
+}
+
+void				Dog::setIdea(std::string const & idea)
+{
+	this->_attribute->setIdea(idea);
+}
+
+void				Dog::getIdeas()const
+{
+	this->_attribute->showIdeas();
 }

@@ -43,3 +43,14 @@ void		Animal::makeSound()const
 {
 	std::cout << "Don't know what to say hum: HI HAAAAN" << std::endl;
 }
+
+void		Animal::setIdea(std::string const & idea)
+{
+	(void)idea;
+	std::cout << "I'm not supposed to have any idea" << std::endl;
+}
+
+void		Animal::getIdeas()const
+{
+	std::cout << "Animal not supposed to have any idea" << std::endl;
+}
