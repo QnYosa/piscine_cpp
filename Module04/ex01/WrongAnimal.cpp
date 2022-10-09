@@ -5,7 +5,7 @@ WrongAnimal::WrongAnimal(/* args */):_type("Unknown")
 	std::cout << "WrongAnimal constructor" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(WrongAnimal const & src)
+WrongAnimal::WrongAnimal(WrongAnimal const & src):_type("Unknown")
 {
 	std::cout << "WrongAnimal copy constructor" << std::endl;
 	*this = src;

@@ -4,38 +4,50 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
+#include <stdio.h>
+#define	SIZE 4
 
-Animal	*fillChenil()
+void	fillChenil(Animal *chenil[])
 {
-	Animal	*chenil;
-
-	chenil = new Animal[100];
-	for (int i = 0; i < 50; i++)
-	{
-		Dog *n = new Dog();
-		chenil[i] = *n;
-	}
-	for (int i = 50; i < 100; i++)
-	{
-		Cat *n = new Cat();
-		chenil[i] = *n;
-	}
-	return (chenil);
+	for (int i = 0; i < SIZE/2; i++)
+		chenil[i] = new Dog();
+	for (int i = SIZE/2; i < SIZE; i++)
+		chenil[i]= new Cat();
 }
 
-void	destroyChenil(Animal *chenil)
+void	destroyChenil(Animal *chenil[])
 {
-	delete[] chenil;
+	for (int i = 0; i < SIZE; i++)
+	{
+		delete chenil[i];
+	}
 }
 
 int main()
 {
-	Animal *Chenil;
-	
-	Chenil = fillChenil();
-	std::cout << "Start" << std::endl;
-	// for(int i = 0; i < 100; i++)
-	// 	std::cout << Chenil[i].getType() << std::endl;
-	destroyChenil(Chenil);
+	// Animal *Chenil[SIZE];
+	// fillChenil(Chenil);
+	// std::cout << "Start" << std::endl;
+	// for(int i = 0; i < SIZE; i++)
+	// {
+
+	// 	std::cout << Chenil[i]->getType() << std::endl;
+	// 	Chenil[i]->makeSound();
+	// }
+	Brain cerebro;
+	cerebro.setIdea("Aller sur Mars");
+	cerebro.setIdea("Sortir");
+	cerebro.setNIdea(99, "Détruire la Terre");
+	cerebro.setIdea("Acheter du sel");
+	cerebro.getIdeas();
+	Dog cat;
+	cat.setIdea("Faire chier");
+	cat.setIdea("Faire chier");
+	const Animal *ani = &cat;
+	Dog eliott = cat;
+	eliott.getIdeas();
+	ani->getIdeas();
+	ani->makeSound();
+	// destroyChenil(Chenil);
 	return 0;
 }
