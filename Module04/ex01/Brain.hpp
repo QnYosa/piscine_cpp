@@ -13,9 +13,7 @@ class Brain
 		~Brain();
 		Brain & 	operator=(Brain const & src);
 		void		setIdea(int index);
+		void		setNidea(int index);
 };
-
-
-
 
 #endif
