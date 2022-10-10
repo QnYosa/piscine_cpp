@@ -2,7 +2,7 @@ NAME			= ex02
 
 SRCS			= main.cpp 
 
-OBJS			= $(SRCS:.cpp=.o)
+OBJS			= $(SRCS:%.cpp=%.o)
 
 CPPFLAGS		= -Wall -Werror -Wextra -std=c++98
 
@@ -20,3 +20,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

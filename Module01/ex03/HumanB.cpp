@@ -1,13 +1,10 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) :_name("UnKnown Name")
+HumanB::HumanB(std::string name) :_name(name), _weaponB(0), _has_Weapon(0) 
 {
+	std::cout << "Human B  parameter constructor" << std::endl;
 	if (name.empty())
-		this->setName("Unknown name");
-	else
-		this->setName(name);
-	this->_weaponB = 0;
-	this->_has_Weapon = 0;
+		this->setName("Nameless Person");
 	std::cout << this->getName() << " has been created" << std::endl;
 }
 
@@ -19,9 +16,9 @@ HumanB::~HumanB()
 void		HumanB::attack(void)
 {
 	if (this->_has_Weapon)
-		std::cout << this->_name << " attack us with the weapon " << this->_weaponB->getType() << std::endl;
+		std::cout << this->_name << " attacks with : " << this->_weaponB->getType() << std::endl;
 	else
-		std::cout << "Impossible to attack without weapon" << std::endl;	
+		std::cout << "Impossible to attack without a weapon" << std::endl;	
 }
 
 void		HumanB::setName(std::string name)

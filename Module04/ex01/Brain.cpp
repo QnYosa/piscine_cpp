@@ -18,6 +18,7 @@ Brain::~Brain()
 
 Brain &			Brain::operator=(Brain const & src)
 {
+	std::cout << "equal operator" << std::endl;
 	if (this != &src)
 	{
 		for (int i = 0; i < 100; i++)
@@ -70,3 +71,4 @@ std::string*		Brain::getIdeas()const
 {
 	return ((std::string *)_ideas);
 }
+

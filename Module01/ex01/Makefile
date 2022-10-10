@@ -2,7 +2,7 @@ NAME		= ex01
 
 SRCS		= main.cpp Zombie.cpp zombieHorde.cpp
 
-OBJS		= ${SRCS:.cpp=.o}
+OBJS		= ${SRCS:%.cpp=%.o}
 
 CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
 

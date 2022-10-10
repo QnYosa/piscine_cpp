@@ -14,8 +14,8 @@ Cat::Cat(Cat const & src):Animal("Cat")
 
 Cat::~Cat()
 {
-	std::cout << "Cat destructor" << std::endl;
 	delete _attribute;
+	std::cout << "Cat destructor" << std::endl;
 }
 
 Cat & Cat::operator=(Cat const & src)
@@ -33,11 +33,6 @@ void				Cat::makeSound()const
 	std::cout << "MEOW" << std::endl;
 }
 
-std::string*		Cat::getAttribute()const
-{
-	return (this->_attribute->getIdeas());
-}
-
 void				Cat::setIdea(std::string const & idea)
 {
 	this->_attribute->setIdea(idea);
@@ -46,4 +41,9 @@ void				Cat::setIdea(std::string const & idea)
 void				Cat::getIdeas()const
 {
 	this->_attribute->showIdeas();
+}
+
+Brain	&			Cat::getAttribute()const
+{
+	return (*_attribute);
 }

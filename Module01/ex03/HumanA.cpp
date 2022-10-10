@@ -4,9 +4,6 @@ HumanA::HumanA(std::string name, Weapon &weaponA) :_name(name), _weaponA(weaponA
 {
 	if (name.empty())
 		this->setName("John Doe");
-	else
-		this->setName(name);
-	this->_weaponA = weaponA;
 	std::cout << this->getName() << " has been created" << std::endl;
 
 }

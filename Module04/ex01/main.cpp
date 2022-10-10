@@ -23,21 +23,21 @@ void	destroyChenil(Animal *chenil[])
 
 int main()
 {
-	// Animal *Chenil[SIZE];
-	// fillChenil(Chenil);
-	// std::cout << "Start" << std::endl;
-	// for(int i = 0; i < SIZE; i++)
-	// {
+	Animal *Chenil[SIZE];
+	fillChenil(Chenil);
+	std::cout << "Start" << std::endl;
+	for(int i = 0; i < SIZE; i++)
+	{
 
-	// 	std::cout << Chenil[i]->getType() << std::endl;
-	// 	Chenil[i]->makeSound();
-	// }
+	std::cout << Chenil[i]->getType() << std::endl;
+	Chenil[i]->makeSound();
+	}
 	Brain cerebro;
 	cerebro.setIdea("Aller sur Mars");
 	cerebro.setIdea("Sortir");
 	cerebro.setNIdea(99, "Détruire la Terre");
 	cerebro.setIdea("Acheter du sel");
-	cerebro.getIdeas();
+	cerebro.showIdeas();
 	Dog cat;
 	cat.setIdea("Faire chier");
 	cat.setIdea("Faire chier");
@@ -46,6 +46,6 @@ int main()
 	eliott.getIdeas();
 	ani->getIdeas();
 	ani->makeSound();
-	// destroyChenil(Chenil);
+	destroyChenil(Chenil);
 	return 0;
 }

@@ -6,7 +6,7 @@ SRCS			= main.cpp \
 
 OBJS			= ${SRCS:.cpp=.o}
 
-CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 -g3 -fsanitize=address
+CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 
 
 RM				= rm -f
 

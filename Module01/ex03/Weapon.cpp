@@ -1,20 +1,23 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string s) : _type("Unspecified type of weapon")
+Weapon::Weapon():_type("Unknown")
 {
-	this->_type = s;
+	std::cout << "Weapon default constructor" << std::endl;
+}
+
+Weapon::Weapon(std::string s) : _type(s)
+{
 	std::cout << this->getType() << " has been created" << std::endl;
 }
 
 Weapon::~Weapon()
 {
-	std::cout << this->getType() << " has been destoyed" << std::endl;
+	std::cout << this->getType() << " has been destroyed" << std::endl;
 }
 
-std::string&	Weapon::getType(void)
+std::string const &	Weapon::getType(void)const
 {
-	std::string&	ret = this->_type;
-	return (ret);
+	return (_type);
 }
 
 void	Weapon::setType(std::string type)

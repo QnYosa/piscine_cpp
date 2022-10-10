@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <string>
 
 int	error_args(void)
@@ -20,7 +21,7 @@ int main(int argc, char **argv)
 	std::fstream	filename;
 	std::string		contentFile;
 	filename.open(argv[1], std::ios::in);
-	if (filename.is_open())
+	if (filename && filename.is_open())
 	{
 		std::string line;
 		while (getline(filename, line))
@@ -32,7 +33,10 @@ int main(int argc, char **argv)
 		filename.close();
 	}
 	else
+	{
+		std::cout << "File doesn't exist" << std::endl;
 		return (-1);
+	}
 	std::string	toReplace = argv[2];
 	std::string	newWord = argv[3];
 	if (toReplace.empty())
@@ -44,11 +48,17 @@ int main(int argc, char **argv)
 		contentFile.erase(pos, toReplace.length());
 		contentFile.insert(pos, newWord);
 	}
-	filename.open(argv[1], std::ios::out);
-	if (filename.is_open())
+	std::fstream outfile;
+	std::string outfileName = argv[1];
+	outfileName = outfileName.append(".replace");
+	char *cstr = new char[outfileName.length() + 1];
+	std::strcpy(cstr, outfileName.c_str());
+	outfile.open(cstr, std::ios::out);
+	if (outfile.is_open())
 	{
-		filename << contentFile;
-		filename.close();
+		outfile << contentFile;
+		outfile.close();
 	}
+	delete[] cstr;
 	return (0);
 }

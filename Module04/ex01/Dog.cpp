@@ -14,8 +14,8 @@ Dog::Dog(Dog const & src):Animal("Dog")
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor" << std::endl;
 	delete _attribute;
+	std::cout << "Dog destructor" << std::endl;
 }
 
 Dog &	Dog::operator=(Dog const & src)
@@ -23,20 +23,16 @@ Dog &	Dog::operator=(Dog const & src)
 	if (this != &src)
 	{
 		this->setType(src.getType());
-		this->_attribute = src._attribute; // checker si meme adresse
+		this->_attribute = new Brain(src.getAttribute()); // checker si meme adresse
 	}
 	return (*this);
 }
 
-void		Dog::makeSound()const
+void				Dog::makeSound()const
 {
 	std::cout << "WAF WAF" << std::endl;
 }
 
-std::string*		Dog::getAttribute()const
-{
-	return (this->_attribute->getIdeas());
-}
 
 void				Dog::setIdea(std::string const & idea)
 {
@@ -46,4 +42,9 @@ void				Dog::setIdea(std::string const & idea)
 void				Dog::getIdeas()const
 {
 	this->_attribute->showIdeas();
+}
+
+Brain	&			Dog::getAttribute()const
+{
+	return (*_attribute);
 }

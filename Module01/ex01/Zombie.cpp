@@ -2,10 +2,12 @@
 
 Zombie::Zombie(/* args */)
 {
+	std::cout << "Zombie constructor" << std::endl;
 }
 
 Zombie::~Zombie()
 {
+	std::cout << "Zombie destructor" << std::endl;
 }
 
 void	Zombie::announce(void)

@@ -4,9 +4,8 @@ std::string check_getline()
 {
 	std::string s;
 	std::getline(std::cin, s);
-	if (std::cin.fail())
+	if (std::cin.eof() || std::cin.fail())
 	{
-		printf("FDP\n");
 		std::cin.clear();
 		std::cin.ignore();
 		exit(0);

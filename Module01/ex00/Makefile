@@ -3,7 +3,7 @@ NAME		 = ex00
 SRCS 		= main.cpp newZombie.cpp randomChump.cpp \
 				Zombie.cpp
 
-OBJS 		= ${SRCS:.cpp=.o}
+OBJS 		= ${SRCS:%.cpp=%.o}
 
 CPPFLAGS	= -Wall -Werror -Wextra -std=c++98
 
@@ -21,3 +21,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all re clean fclean
