@@ -1,8 +1,8 @@
-NAME		= ex01
+NAME		= ex02
 
 SRCS 		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
-OBJS		= ${SRCS:%.cpp=%.o}
+OBJS		= ${SRCS:.cpp=.o}
 
 CPPFLAGS	=  -Wall -Werror -Wextra -std=c++98 -g
 
@@ -20,5 +20,3 @@ fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all
-
-.PHONY: clean fclean re all

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #define	SIZE 4
 
-void	fillChenil(Animal *chenil[])
+void	fillChenil(AAnimal *chenil[])
 {
 	for (int i = 0; i < SIZE/2; i++)
 		chenil[i] = new Dog();
@@ -15,7 +15,7 @@ void	fillChenil(Animal *chenil[])
 		chenil[i]= new Cat();
 }
 
-void	destroyChenil(Animal *chenil[])
+void	destroyChenil(AAnimal *chenil[])
 {
 	for (int i = 0; i < SIZE; i++)
 		delete chenil[i];
@@ -23,7 +23,7 @@ void	destroyChenil(Animal *chenil[])
 
 int main()
 {
-	// Animal *Chenil[SIZE];
+	// AAnimal *Chenil[SIZE];
 	// fillChenil(Chenil);
 	// std::cout << "Start" << std::endl;
 	// for(int i = 0; i < SIZE; i++)
@@ -41,7 +41,9 @@ int main()
 	Dog cat;
 	cat.setIdea("Faire chier");
 	cat.setIdea("Faire chier");
-	const Animal *ani = &cat;
+	const AAnimal *ani = &cat;
+	// AAnimal cobaye; // ne va pas fonctionner
+	// cobaye.getType(); // ne va pas fonctionner 
 	Dog eliott = cat;
 	eliott.getIdeas();
 	ani->getIdeas();
