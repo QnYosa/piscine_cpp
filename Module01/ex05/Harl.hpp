@@ -1,9 +1,10 @@
-#ifndef KAREN_H
-# define KAREN_H 
+#ifndef HARL_H
+# define HARL_H 
 
 #include <iostream>
+
 # define CALL_MEMBER(object, ptrToMember)
-class Karen
+class Harl
 {
 	private:
 		void	debug(void);
@@ -11,8 +12,8 @@ class Karen
 		void	warning(void);
 		void	error(void);
 	public:
-		Karen();
-		~Karen();
+		Harl();
+		~Harl();
 		void	complain(std::string level);
 };
 #endif

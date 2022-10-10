@@ -1,10 +1,10 @@
-NAME				= karenFilter
+NAME				= harlFilter
 
-SRCS				= main.cpp Karen.cpp
+SRCS				= main.cpp Harl.cpp
 
-OBJS				= $(SRCS:.cpp=.o)
+OBJS				= $(SRCS:%.cpp=%.o)
 
-CPPFLAGS			= -Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
+CPPFLAGS			= -Wall -Werror -Wextra -std=c++98 
 
 RM					= rm -f 
 
@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 clean:
 	$(RM) $(OBJS)
 
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all

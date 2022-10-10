@@ -1,19 +1,20 @@
-#ifndef	KAREN_H
-#define KAREN_H
+#ifndef	HARl_H
+#define HARl_H
 
 #include <iostream>
 #include <string>
 
-class Karen
+class Harl
 {
 	private:
 		void	debug(void);
 		void	info(void);
 		void	warning(void);
 		void	error(void);
+		void	unknown(void);
 	public:
-		Karen(/* args */);
-		~Karen();
+		Harl(/* args */);
+		~Harl();
 		void	complain(std::string bullshit);
 };
 

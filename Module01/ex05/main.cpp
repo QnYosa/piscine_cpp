@@ -1,17 +1,21 @@
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main(void)
 {
-	Karen	fKaren;
+	Harl	fHarl;
 	std::string level = "WARNING";
-	fKaren.complain(level);
+	fHarl.complain(level);
+	std::cout << "-------------INFO----------------" << std::endl;
 	level = "INFO";
-	fKaren.complain(level);
+	fHarl.complain(level);
+	std::cout << "-------------ERROR----------------" << std::endl;
 	level = "ERROR";
-	fKaren.complain(level);
+	fHarl.complain(level);
+	std::cout << "-------------DEBUG----------------" << std::endl;
 	level = "DEBUG";
-	fKaren.complain(level);
+	fHarl.complain(level);
+	std::cout << "-------------ELSE----------------" << std::endl;
 	level = "";
-	fKaren.complain(level);
+	fHarl.complain(level);
 	return (0);
 }

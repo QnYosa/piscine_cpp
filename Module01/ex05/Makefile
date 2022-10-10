@@ -1,6 +1,6 @@
 NAME			= ex05
 
-SRCS			= main.cpp Karen.cpp
+SRCS			= main.cpp Harl.cpp
 
 OBJS			= $(SRCS:.cpp=.o)
 
