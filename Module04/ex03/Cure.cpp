@@ -2,7 +2,7 @@
 
 Cure::Cure(/* args */): _type("cure")
 {
-	std::cout << "Cure constructor" << std::endl;
+	std::cout << "Cure default constructor" << std::endl;
 }
 
 Cure::Cure(Cure const & src)
@@ -25,17 +25,13 @@ Cure &		Cure::operator=(Cure const & src)
 	return (*this);
 }
 
-std::string	const & Cure::getType()const
-{
-	return (this->_type);
-}
-
 AMateria* Cure::clone()const
 {
-
+	return (new Cure(*this));
 }
 
 void	Cure::use(ICharacter& target)
 {
-	
+	std::cout << "* heals " << target.getName() \
+	<< "'s wounds *" << std::endl;
 }

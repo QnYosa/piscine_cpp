@@ -1,6 +1,9 @@
 NAME			= ex02
 
-SRCS			= main.cpp AMateria.cpp ICharacter.cpp Ice.cpp Cure.cpp
+SRCS			= main.cpp AMateria.cpp ICharacter.cpp Ice.cpp Cure.cpp Character.cpp\
+				Character.cpp
+
+INCLUDES		= AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp 
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
@@ -12,7 +15,7 @@ RM 				= rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES)
 	c++ $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:

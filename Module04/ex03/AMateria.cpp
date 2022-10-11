@@ -24,8 +24,6 @@ std::string const & AMateria::getType()const
 
 AMateria	& AMateria::operator=(AMateria const & src)
 {
-	if (this != &src)
-	{
-		this->_type = src._type;
-	}
+	(void)src;
+	return (*this);
 }
