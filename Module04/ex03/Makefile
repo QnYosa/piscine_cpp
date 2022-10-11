@@ -1,6 +1,6 @@
 NAME			= ex02
 
-SRCS			= main.cpp AMateria.cpp ICharacter.cpp
+SRCS			= main.cpp AMateria.cpp ICharacter.cpp Ice.cpp Cure.cpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
