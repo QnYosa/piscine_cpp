@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-Character::Character(/* args */)
+Character::Character(/* args */):_name("Unknown") 
 {
 	std::cout << "Character default constructor" << std::endl;
 }
@@ -13,6 +13,7 @@ Character::Character(std::string const & name): _name(name)
 Character::Character(Character const & src)
 {
 	std::cout << "Character copy constructor" << std::endl;
+	*this = src;
 }
 
 Character::~Character()
@@ -25,7 +26,14 @@ Character & Character::operator=(Character const & src)
 	if (this != &src)
 	{
 		this->_name = src._name;
+		for (int i = 0; i < 4; i++)
+		{
+			// if (_inventaire[i] != src._inventaire[i])
+			// 	delete [] _inventaire[i];
+			_inventaire[i] = src._inventaire[i];
+		}
 	}
+	return (*this);
 }
 
 void		Character::equip(AMateria* m)
@@ -53,5 +61,15 @@ void		Character::use(int idx, ICharacter& target)
 {
 	if (idx > 3 || idx < 0)
 		return ;
-	_inventaire[idx]->AMateria::use(target);
+	if (_inventaire[idx])
+	{
+		std::cout << "salut je suis " << _inventaire[idx]->getType() << std::endl;
+		_inventaire[idx]->use(target);
+	// _inventaire[idx]->AMateria::use(target);
+	}
+}
+
+std::string const & Character::getName()const
+{
+	return (_name);
 }

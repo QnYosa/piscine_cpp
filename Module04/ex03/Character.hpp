@@ -2,7 +2,6 @@
 #define CHARACTER_HPP
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
-#include "Materia.hpp"
 
 class Character : public ICharacter
 {

@@ -1,15 +1,17 @@
-NAME			= ex02
+NAME			= ex03
 
-SRCS			= main.cpp AMateria.cpp ICharacter.cpp Ice.cpp Cure.cpp Character.cpp\
-				Character.cpp
+SRCS			= main.cpp ICharacter.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp \
+				MateriaSource.cpp
 
-INCLUDES		= AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp 
+
+INCLUDES		= AMateria.hpp ICharacter.hpp Ice.hpp Cure.hpp Character.hpp \
+				MateriaSource.hpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
 # DPDNCS			= $(SRCS:%.cpp=%.d)
 
-FLAGS			= -Wall -Werror -Wextra -std=c++98 
+FLAGS			= -Wall -Werror -Wextra -std=c++98 -g
 
 RM 				= rm -f 
 
@@ -22,7 +24,7 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -$(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
