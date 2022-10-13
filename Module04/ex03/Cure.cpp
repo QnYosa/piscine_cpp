@@ -1,6 +1,6 @@
 #include "Cure.hpp"
 
-Cure::Cure(/* args */): _type("cure")
+Cure::Cure(/* args */): AMateria("cure")
 {
 	std::cout << "Cure default constructor" << std::endl;
 }

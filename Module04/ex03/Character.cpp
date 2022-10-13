@@ -22,6 +22,10 @@ Character::~Character()
 
 Character & Character::operator=(Character const & src)
 {
+	if (this != &src)
+	{
+		this->_name = src._name;
+	}
 }
 
 void		Character::equip(AMateria* m)
@@ -35,10 +39,19 @@ void		Character::equip(AMateria* m)
 
 void		Character::unequip(int idx)
 {
-	delete _inventaire[idx];
+	if (idx > 3)
+		return ;
+	AMateria*	copy[4];
+	for (int i = 0; i < 4; i++)
+		if (i != idx)
+			copy[i] = _inventaire[i];
+	for (int i = 0; i < 4; i++)
+		_inventaire[i] = copy[i];
 }
 
 void		Character::use(int idx, ICharacter& target)
 {
-	
+	if (idx > 3 || idx < 0)
+		return ;
+	_inventaire[idx]->AMateria::use(target);
 }
