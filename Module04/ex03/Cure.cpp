@@ -5,7 +5,7 @@ Cure::Cure(/* args */): AMateria("cure")
 	std::cout << "Cure default constructor" << std::endl;
 }
 
-Cure::Cure(Cure const & src)
+Cure::Cure(Cure const & src):  AMateria("cure")
 {
 	std::cout << "Cure copy constructor" << std::endl;
 	*this = src;

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstddef>
 #include "AMateria.hpp"
 
 class AMateria;

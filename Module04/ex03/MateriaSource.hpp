@@ -13,9 +13,9 @@ public:
 	MateriaSource(MateriaSource const & src);
 	~MateriaSource();
 	MateriaSource &	operator=(MateriaSource const & src);
-	// virtual ~IMateriaSource();
-	virtual void learnMateria(AMateria*) = 0;
-	virtual AMateria* createMateria(std::string const & type) = 0;
+	~MateriaSource();
+	void learnMateria(AMateria*);
+	AMateria* createMateria(std::string const & type);
 };
 
 
