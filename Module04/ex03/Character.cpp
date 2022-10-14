@@ -4,7 +4,6 @@ Character::Character(/* args */): ICharacter(), _name("Unknown")
 {
 	for (int i = 0; i < 4; i++)
 		_inventaire[i] = NULL;
-	// *_inventaire = 0;
 	std::cout << "Character default constructor" << std::endl;
 }
 
@@ -25,6 +24,11 @@ Character::Character(Character const & src): ICharacter(), _name(src._name)
 
 Character::~Character()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventaire[i])
+			delete _inventaire[i];
+	}
 	std::cout << "Character destructor" << std::endl;
 }
 
@@ -35,9 +39,13 @@ Character & Character::operator=(Character const & src)
 		this->_name = src._name;
 		for (int i = 0; i < 4; i++)
 		{
-			if (_inventaire[i] != src._inventaire[i])
-				delete [] _inventaire[i];
-			_inventaire[i] = src._inventaire[i];
+			// if (_inventaire[i] != src._inventaire[i])
+			// 	delete [] _inventaire[i]; // buggera car pas d'allocation 
+			// _inventaire[i] = src._inventaire[i];
+			if (src._inventaire[i]->getType() == "ice")
+				_inventaire[i] = new Ice();
+			else if (src._inventaire[i]->getType() == "cure")
+				_inventaire[i] = new Cure();
 		}
 	}
 	return (*this);
@@ -79,7 +87,7 @@ void		Character::use(int idx, ICharacter& target)
 	}
 	if (_inventaire[idx])
 	{
-		std::cout << "salut je suis " << _inventaire[idx]->getType() << std::endl;
+		// std::cout << "salut je suis " << _inventaire[idx]->getType() << std::endl;
 		_inventaire[idx]->use(target);
 	// _inventaire[idx]->AMateria::use(target);
 	}

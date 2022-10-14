@@ -1,12 +1,12 @@
 NAME			= ex03
 
 SRCS			= main.cpp ICharacter.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp \
-				MateriaSource.cpp
+				IMateriaSource.cpp MateriaSource.cpp
 
-CXX			= g++
+CXX				= c++
 
 INCLUDES		= AMateria.hpp ICharacter.hpp Ice.hpp Cure.hpp Character.hpp \
-				MateriaSource.hpp
+				IMateriaSource.hpp MateriaSource.hpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
