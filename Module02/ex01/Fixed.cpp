@@ -1,16 +1,28 @@
 #include "Fixed.hpp"
 #include "math.h"
 
-Fixed::Fixed(/* args */)
+/*==================CONSTRUCTEURS=======================*/
+Fixed::Fixed(/* args */):_fixedPart(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_fixedPart = 0;
 }
 
-Fixed::Fixed(Fixed const & src)
+Fixed::Fixed(const int n)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	this->_fixedPart = n * (1 << this->_bits);
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float f)
+{
+	this->_fixedPart = round(f * (1 << this->_bits));
+	std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::Fixed(Fixed const & src):_fixedPart(0)
+{
 	*this = src;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -18,18 +30,7 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const int n)
-{
-	std::cout << "Int constructor called" << std::endl;
-	this->_fixedPart = n * (1 << this->_bits);
-}
-
-Fixed::Fixed(const float f)
-{
-	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPart = round(f * (1 << this->_bits));
-}
-
+/*==================GETTER/SETTER===========================*/
 int	Fixed::getRawBits(void) const
 {
 	// std::cout << "getRawBits member function called " << std::endl;
@@ -41,6 +42,8 @@ void	Fixed::setRawBits(int const raw)
 	this->_fixedPart = raw * (1 << this->_bits);
 }
 
+/*===================OPERATIONS==========================*/
+
 int		Fixed::toInt(void)const
 {
 	return (this->getRawBits() / (1 << this->_bits));
@@ -50,6 +53,8 @@ float	Fixed::toFloat(void)const
 {
 	return ((float)this->getRawBits() / (float)(1 << this->_bits));
 }
+
+/*=================OVERLOADS=========================*/
 
 Fixed & Fixed::operator=(Fixed const & rhs)
 {

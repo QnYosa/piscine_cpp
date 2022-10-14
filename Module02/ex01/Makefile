@@ -4,7 +4,7 @@ SRCS			= main.cpp Fixed.cpp
 
 OBJS			= $(SRCS:.cpp=.o)
 
-CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
+CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 -g # -fsanitize=address
 
 RM				= rm -f 
 
