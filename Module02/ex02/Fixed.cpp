@@ -2,36 +2,35 @@
 
 Fixed::Fixed(/* args */)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Fixed Default constructor" << std::endl;
 	this->_fixedPart = 0 * (1 << this->_bits);
 }
 
 Fixed::Fixed(Fixed const & src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Fixed Copy constructor" << std::endl;
 	*this = src;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed Destructor" << std::endl;
 }
 
 Fixed::Fixed(const int n)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Fixed Int constructor" << std::endl;
 	this->_fixedPart = n * (1 << this->_bits);
 }
 
 Fixed::Fixed(const float f)
 {
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << "Fixed Float constructor called" << std::endl;
 	this->_fixedPart = f * (1 << this->_bits);
 }
 
 int	Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called " << std::endl;
 	return (this->_fixedPart);
 }
 
