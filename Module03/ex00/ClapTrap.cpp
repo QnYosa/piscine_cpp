@@ -10,13 +10,10 @@ ClapTrap::ClapTrap(std::string & name): _name(name), _hitPoints(10), _energyPoin
 	std::cout << "ClapTrap parameter constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const & src)
+ClapTrap::ClapTrap(ClapTrap const & src):_name("Unknown"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "ClapTrap Copy constructor" << std::endl; 
-	this->_name = src._name;
-	this->_hitPoints = src._hitPoints;
-	this->_energyPoints = src._energyPoints;
-	this->_attackDamage = src._attackDamage;
+	std::cout << "ClapTrap Copy constructor" << std::endl;
+	*this = src;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & src)
@@ -33,6 +30,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 
 ClapTrap::~ClapTrap()
 {
+	std::cout << "ClapTrap destructor" << std::endl;
 }
 
 std::string	ClapTrap::getName()

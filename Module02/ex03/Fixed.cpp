@@ -2,36 +2,35 @@
 
 Fixed::Fixed(/* args */)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Fixed Default constructor" << std::endl;
 	this->_fixedPart = 0 * (1 << this->_bits);
 }
 
 Fixed::Fixed(Fixed const & src)
 {
-	// std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Fixed Copy constructor" << std::endl;
 	*this = src;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "Destructor called" << std::endl;
+	std::cout << "Fixed Destructor" << std::endl;
 }
 
 Fixed::Fixed(const int n)
 {
-	// std::cout << "Int constructor called" << std::endl;
+	std::cout << "Fixed Int constructor" << std::endl;
 	this->_fixedPart = n * (1 << this->_bits);
 }
 
 Fixed::Fixed(const float f)
 {
-	// std::cout << "Float constructor called" << std::endl;
+	std::cout << "Fixed Float constructor called" << std::endl;
 	this->_fixedPart = f * (1 << this->_bits);
 }
 
 int	Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called " << std::endl;
 	return (this->_fixedPart);
 }
 
@@ -81,50 +80,33 @@ int	Fixed::operator>(Fixed const & klass)
 
 int	Fixed::operator>=(Fixed const & klass)
 {
-	float	precision = 0.000000001f;
-	if (this->toFloat() - klass.toFloat() < precision)
+	if (this->getRawBits() == klass.getRawBits())
 		return (1);
-	else if (this->toFloat() > klass.toFloat())
+	else if (this->getRawBits() > klass.getRawBits())
 		return (1);
 	return (0);
 }
 
 int	Fixed::operator<=(Fixed const & klass)
 {
-	float	precision = 0.00000001f;
-	if (this->toFloat() - klass.toFloat() < precision)
-	{
-		// std::cout << "I'm equal" << std::endl;
+	if (this->getRawBits() == klass.getRawBits())
 		return (1);
-	}
-	else if (this->toFloat() < klass.toFloat())
-	{
-		// std::cout << "I'm lesser" << std::endl;
-	}
-	// std::cout << "I'm superior" << std::endl;
+	else if (this->getRawBits() < klass.getRawBits())
+		return (1);
 	return (0);
 }
 
 int	Fixed::operator==(Fixed const & klass)
 {
-	float	precision = 0.00000001f;
-	if (this->toFloat() - klass.toFloat() < precision)
-	{
-		// std::cout << "I'm equal" << std::endl;
+	if (this->getRawBits() == klass.getRawBits())
 		return (1);
-	}
 	return (0);
 }
 
 int	Fixed::operator!=(Fixed const & klass)
 {
-	float	precision = 0.00000001f;
-	if (this->toFloat() - klass.toFloat() > precision)
-	{
-		std::cout << "I'm unequal" << std::endl;
+	if (this->getRawBits() != klass.getRawBits())
 		return (1);
-	}
-	std::cout << "I'm equal" << std::endl;
 	return (0);
 }
 
@@ -161,30 +143,44 @@ Fixed	Fixed::operator++(int)
 	return (tmp);
 }
 
-// static Fixed &	min(Fixed & a, Fixed & b)
-// {
-// 	if (a.getRawBits() < b.getRawBits())
-// 		return (a);
-// 	return (b);
-// }
+Fixed &	Fixed::operator--()
+{
+	this->_fixedPart--;
+	return (*this);
+}
 
-// static Fixed const & min(Fixed const & a, Fixed const & b)
-// {
-// 	if (a.getRawBits() < b.getRawBits())
-// 		return (a);
-// 	return (b);
-// }
+Fixed	Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	operator--();
+	return (tmp);
+}
+Fixed &	Fixed::min(Fixed & a, Fixed & b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	return (b);
+}
 
-// static Fixed &		max(Fixed & a, Fixed & b)
-// {
-// 	if (a.getRawBits() > b.getRawBits())
-// 		return (a);
-// 	return (b);
-// }
+const Fixed & Fixed::min(Fixed const & a, Fixed const & b)
+{
+	std::cout << ">>>>>>>>>>CONST MIN<<<<<<<<<<<\n";
+	if (a.getRawBits() < b.getRawBits())
+		return (a);
+	return (b);
+}
 
-// static Fixed const & max(Fixed const & a, Fixed const & b)
-// {
-// 	if (a.getRawBits() > b.getRawBits())
-// 		return (a);
-// 	return (b);
-// }
+Fixed & Fixed::max(Fixed & a, Fixed & b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	return (b);
+}
+
+const Fixed & Fixed::max(Fixed const & a, Fixed const & b)
+{
+	std::cout << ">>>>>>>>>>CONST MAX<<<<<<<<<<<\n";
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	return (b);
+}

@@ -4,14 +4,16 @@ SRCS			= main.cpp Fixed.cpp
 
 OBJS			= $(SRCS:.cpp=.o)
 
-CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 -fsanitize=address 
+CPPFLAGS		= -Wall -Werror -Wextra -std=c++98 #-fsanitize=address 
+
+CXX				= c++
 
 RM				= rm -f
 
 all:	$(NAME)
 
 $(NAME): $(OBJS)
-	c++ $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

@@ -22,7 +22,7 @@ class Point
 		Point(float x, float y);
 		Point(Point const & src);
 		~Point();
-		void		getValues();
+		void		displayValues()const;
 		Point &		operator=(Point & point);
    		bool 		bsp(Point const & a, Point const & b, Point const & c, Point const & point);
 };
