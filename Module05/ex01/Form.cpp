@@ -81,6 +81,16 @@ const int	Form::getGradeToExecute()const
 	return (_gradeToExecute);
 }
 
+int			Form::beSigned(Bureaucrat const & bCrat)
+{
+	if (_signed == true)
+		std::cerr << bCrat.getName() << "couldn't sign " \
+		<< getName() << " because it has already be signed\n";
+	else if (bCrat.getGrade() < _gradeToSign)
+		throw (GradeTooLowException());
+	_signed = 1;
+}
+
 std::ostream & operator<<(std::ostream & out, Form const & rhs)
 {
 	out << rhs.getName() << " " << rhs.getSignature() << " " << rhs.getGradeToSign() \
