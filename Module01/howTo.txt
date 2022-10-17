@@ -1,0 +1,2 @@
+Savoir si c'est un fichier
+	-essayer d'ecrire dedans

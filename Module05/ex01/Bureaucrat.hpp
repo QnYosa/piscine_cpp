@@ -25,6 +25,7 @@ class Bureaucrat
 			public:
 				const char* what() const throw();
 		};
+		
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -35,6 +36,7 @@ class Bureaucrat
 		int const & 		getGrade()const;
 		void				promotion();
 		void				demotion();
+		void				signForm();
 };
 	std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs);
 
