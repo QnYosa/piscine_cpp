@@ -20,10 +20,10 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & src)
 {
 	if (this != &src)
 	{
-		this->_name = *(&src._name);
-		this->_hitPoints = *(&src._hitPoints);
-		this->_energyPoints = *(&src._energyPoints);
-		this->_attackDamage = *(&src._attackDamage);
+		this->_name = src._name;
+		this->_hitPoints = src._hitPoints;
+		this->_energyPoints = src._energyPoints;
+		this->_attackDamage = src._attackDamage;
 	}
 	return (*this);
 }
@@ -33,17 +33,17 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap destructor" << std::endl;
 }
 
-std::string	ClapTrap::getName()
+std::string	const & ClapTrap::getName()const
 {
 	return (_name);
 }
 
-int			ClapTrap::getHitPoints()
+int	const &		ClapTrap::getHitPoints()const
 {
 	return (_hitPoints);
 }
 
-int			ClapTrap::getEnergyPoints()
+int	const &		ClapTrap::getEnergyPoints()const
 {
 	return(_energyPoints);
 }
@@ -132,7 +132,7 @@ void		ClapTrap::recoverHitPoints(int recover)
 	_hitPoints += recover;
 }
 
-void		ClapTrap::displayClaptTrap()
+void		ClapTrap::displayClaptTrap()const
 {
 	std::cout << _name << std::endl;
 	if (_hitPoints > 0)
