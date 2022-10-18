@@ -76,6 +76,23 @@ void	Bureaucrat::demotion()
 	_grade++;
 }
 
+
+void	Bureaucrat::signForm(Form form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (Form::GradeTooLowException error)
+	{
+		std::cerr << error.what() << std::endl;
+	}
+	catch (...)
+	{
+		std::cerr << "";
+	}
+}
+
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs)
 {
 	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();

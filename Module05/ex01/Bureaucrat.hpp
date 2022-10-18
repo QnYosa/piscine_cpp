@@ -2,10 +2,13 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream> 
+#include "Form.hpp"
+
+class Form;
+
 class Bureaucrat
 {
 	private:
-		/* data */
 		std::string _name;
 		int _grade;
 		
@@ -36,7 +39,7 @@ class Bureaucrat
 		int const & 		getGrade()const;
 		void				promotion();
 		void				demotion();
-		void				signForm();
+		void				signForm(Form form);
 };
 	std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs);
 

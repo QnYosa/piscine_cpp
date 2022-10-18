@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
@@ -33,12 +35,12 @@ class Form
 			const char* what() const throw(); // done
 	};
 	/*----------------------------------METHODS--------------------------------*/
-	std::string const & getName()const; //ok
-	bool const & 		getSignature()const;//ok
-	const int			getGradeToSign()const;//ok
-	const int 			getGradeToExecute()const;//ok
-	int					beSigned(Bureaucrat const & bCrat);
+	std::string 		getName()const; //ok
+	bool 			 	getSignature()const;//ok
+	int					getGradeToSign()const;//ok
+	int 				getGradeToExecute()const;//ok
+	void				beSigned(Bureaucrat const & bCrat);
 };
-std::ostream &	operator<<(std::ostream & out, Form const & rhs); //ok
+std::ostream 	&		operator<<(std::ostream & out, Form const & rhs); //ok
 
 #endif
