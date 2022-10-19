@@ -42,4 +42,17 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 	std::string fname = this->_target;
 	fname += "_shrubbery";
 	std::ofstream file(fname.c_str());
+	file <<"       ###           ###\n";
+	file <<"      #o###         #o###\n";
+	file <<"    #####o###     #####o###\n";
+	file <<"   #o##||#/###   #o##|#/###\n";
+	file <<"    ###||/#o#    ###||#o#\n";
+	file <<"     # }|{  #     # }|{  #\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
+	file <<"       }|{          }|{\n";
 }

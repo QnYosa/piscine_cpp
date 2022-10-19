@@ -233,12 +233,6 @@ int main()
 // 	tests_that_will_fail();
 // 	tests_copy_overload();
 // 	tests_hermes();
-       ###
-      #o###
-    #####o###
-   #o#\#|#/###
-    ###\|/#o#
-     # }|{  #
-ejm97  }|{
+
 	return (0);
 }

@@ -29,5 +29,16 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const &
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor)const
 {
-	(void)executor;
+	if (getSignature())
+		return ;
+	else if (executor.getGrade() > this->getGradeToExecute())
+		throw (RobotomyRequestForm::GradeTooLowException());
+	std::cout << "*****************DRILLING NOISES***************\n";
+	int odd = rand() % 2;
+	for (int i = 0; i < 100; i++)
+		odd = rand() % 2;
+	if (odd == 1)
+		std::cout << odd<< " has been robotomised\n";
+	else
+		std::cout << "Oopsy something failed\n";
 }

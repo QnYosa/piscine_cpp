@@ -42,7 +42,6 @@ class AForm
 	int 				getGradeToExecute()const;//ok
 	void				beSigned(Bureaucrat const & bCrat);
 	virtual void		execute(Bureaucrat const & executor)const = 0;
-
 };
 std::ostream 	&		operator<<(std::ostream & out, AForm const & rhs); //ok
 
