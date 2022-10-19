@@ -27,6 +27,11 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const &
 	return (*this);
 }
 
+std::string		RobotomyRequestForm::getTarget()
+{
+	return (_target);
+}
+
 void	RobotomyRequestForm::execute(Bureaucrat const & executor)const
 {
 	if (getSignature())

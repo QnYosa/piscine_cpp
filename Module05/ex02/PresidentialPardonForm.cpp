@@ -27,6 +27,11 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonFor
 	return (*this);
 }
 
+std::string		PresidentialPardonForm::getTarget()
+{
+	return (_target);
+}
+
 void	PresidentialPardonForm::execute(Bureaucrat const & executor)const
 {
 	if (this->getSignature() == 0)

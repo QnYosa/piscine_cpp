@@ -30,6 +30,11 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 	return (*this);
 }
 
+std::string		ShrubberyCreationForm::getTarget()
+{
+	return (_target);
+}
+
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor)const
 {
 	if (!this->getSignature())

@@ -227,12 +227,27 @@ void	tests_hermes()
 	}
 }
 */
+void	test_shrubberry()
+{
+	AForm *shrubbery; 
+	ShrubberyCreationForm trees("Central Park");
+	Bureaucrat Nixon("Richard Nixon", 1);
+	shrubbery = &trees;
+	Nixon.signForm(trees);
+	Nixon.executeForm(trees);
+}
+
 int main()
 {
 // 	tests_zero();
 // 	tests_that_will_fail();
 // 	tests_copy_overload();
 // 	tests_hermes();
-
+	test_shrubberry();
+	// AForm *robotomy;
+	// RobotomyRequestForm benderForm("Bender");
+	// robotomy = &benderForm;
+	// std::cout << benderForm.getGradeToExecute() << std::endl;
+	// std::cout << robotomy->getName();
 	return (0);
 }
