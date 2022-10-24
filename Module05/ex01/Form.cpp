@@ -1,13 +1,13 @@
 #include "Form.hpp"
 
-Form::Form(): _name("Useless form"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
+Form::Form(): _name("Nameless Useless form"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
 {
-	std::cout << "Form default constructor\n";
+	std::cout << PURPLE << "Form default constructor\n" << RESET;
 }
 
 Form::Form(std::string const & name): _name(name), _signed(false), _gradeToSign(150), _gradeToExecute(150)
 {
-	std::cout << "Form string constructor\n";
+	std::cout << PURPLE << "Form string constructor\n" << RESET;
 }
 
 Form::Form(std::string const & name, bool is_signed, const int gradeToSign, const int gradeToExecute): _name(name), _signed(is_signed), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
@@ -20,7 +20,7 @@ Form::Form(std::string const & name, bool is_signed, const int gradeToSign, cons
 		throw (Form::GradeTooLowException());
 	else if (gradeToExecute < 1)
 		throw (Form::GradeTooHighException());
-	std::cout << "Form complete constructor\n";
+	std::cout << PURPLE << "Form complete constructor\n" << RESET;
 }
 
 Form::Form(Form const & src): _name(src._name), _signed(src._signed),\
@@ -34,7 +34,7 @@ Form::Form(Form const & src): _name(src._name), _signed(src._signed),\
 		throw (Form::GradeTooLowException());
 	else if (src._gradeToExecute < 1)
 		throw (Form::GradeTooHighException());
-	std::cout << "Form Copy constructor\n";
+	std::cout << PURPLE << "Form Copy constructor\n" << RESET;
 }
 
 Form::~Form()
@@ -54,8 +54,7 @@ Form & Form::operator=(Form const & src)
 			throw (Form::GradeTooLowException());
 		else if (src._gradeToExecute < 1)
 			throw (Form::GradeTooHighException());
-		Form tmp(src._name, src._signed, src._gradeToSign, src._gradeToExecute);
-		*this = tmp;
+		_signed = src._signed;
 	}
 	return (*this);
 }
@@ -83,16 +82,21 @@ int			Form::getGradeToExecute()const
 void		Form::beSigned(Bureaucrat const & bCrat)
 {
 	if (_signed == true)
-		std::cerr << bCrat.getName() << "couldn't sign " \
+	{
+		std::cerr << bCrat.getName() << " couldn't sign " \
 		<< getName() << " because it has already be signed\n";
-	else if (bCrat.getGrade() < _gradeToSign)
+	}
+	else if (bCrat.getGrade() > _gradeToSign)
+	{
 		throw (GradeTooLowException());
+	}
 	_signed = true;
 }
 
 std::ostream & operator<<(std::ostream & out, Form const & rhs)
 {
-	out << rhs.getName() << " " << rhs.getSignature() << " " << rhs.getGradeToSign() \
-	<< " " << rhs.getGradeToExecute() << " ";
+	out << "Name = " << rhs.getName() << ", is it Signed? " << rhs.getSignature() \
+	<< ", Grade required to be signed = " << rhs.getGradeToSign() \
+	<< ", Grade required to be executed " << rhs.getGradeToExecute() << std::endl;
 	return (out);
 }

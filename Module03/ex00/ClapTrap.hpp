@@ -17,18 +17,18 @@ class ClapTrap
 		ClapTrap(std::string & name);
 		ClapTrap(ClapTrap const & src);
 		~ClapTrap();
-		ClapTrap & operator=(ClapTrap const & src);
+		ClapTrap & 				operator=(ClapTrap const & src);
 		std::string const & 	getName()const;
 		int			const &		getHitPoints()const;
 		int			const & 	getEnergyPoints()const;
-		int						getAttackDamage();
+		int						getAttackDamage()const;
 		void 					attack(const std::string& target);
-		void 					takeDamage(unsigned int amount);
-		void 					beRepaired(unsigned int amount);
-		void					lostEnergy();
-		void					lostHitPoints(int damage);
-		void					recoverHitPoints(int recover);
-		void					displayClaptTrap()const;
+		void 					takeDamage(unsigned int amount); // safe
+		void 					beRepaired(unsigned int amount); // safe 
+		void					lostEnergy(); //safe
+		void					lostHitPoints(int damage); //safe 
+		void					recoverHitPoints(int recover); // safe 
+		void					displayClapTrap()const;
 };
 
 #endif

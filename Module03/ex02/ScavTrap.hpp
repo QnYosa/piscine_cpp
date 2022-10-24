@@ -1,9 +1,9 @@
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 #include	<iostream>
 #include 	<string>
-#include "ClapTrap.h"
+#include 	"ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap
 {

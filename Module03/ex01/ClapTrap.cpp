@@ -1,4 +1,4 @@
-#include "ClapTrap.h"
+#include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap():_name("Unknown"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -13,10 +13,7 @@ ClapTrap::ClapTrap(std::string & name): _name(name), _hitPoints(10), _energyPoin
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
 	std::cout << "ClapTrap copy constructor" << std::endl;
-	this->_name = src._name;
-	this->_hitPoints = src._hitPoints;
-	this->_energyPoints = src._energyPoints;
-	this->_attackDamage = src._attackDamage;
+	*this = src;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & src)
@@ -36,22 +33,22 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap destructor" << std::endl;
 }
 
-std::string	ClapTrap::getName()
+std::string	ClapTrap::getName()const 
 {
 	return (_name);
 }
 
-int			ClapTrap::getHitPoints()
+int			ClapTrap::getHitPoints()const 
 {
 	return (_hitPoints);
 }
 
-int			ClapTrap::getEnergyPoints()
+int			ClapTrap::getEnergyPoints()const 
 {
 	return(_energyPoints);
 }
 
-int			ClapTrap::getAttackDamage()
+int			ClapTrap::getAttackDamage()const 
 {
 	return(_attackDamage);
 }
@@ -68,17 +65,23 @@ void		ClapTrap::attack(const std::string& target)
 	}
 	else
 	{
-		std::cout << _name << " attacks with ClapTrap attack" \
+		std::cout <<  "ClapTrap" << _name << " attacks with ClapTrap attack" \
 		<< target << ", causing " << getAttackDamage()\
 		<< "points of damage" << std::endl \
 		<< _name << " lose 1 Energy point" << std::endl;
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
 {
+	int overload = amount;
+	if (overload < 0)
+	{
+		std::cout << "I wont fall in that trap\n";
+		return ;
+	}
 	if (_hitPoints <= 0)
 	{
 		std::cout << getName() << "is dead" << std::endl;
@@ -92,12 +95,19 @@ void		ClapTrap::takeDamage(unsigned int amount)
 		std::cout << _name << " is attacked and lose " \
 		<< amount << " Hit Points" << std::endl;
 		lostHitPoints(amount);
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
 void		ClapTrap::beRepaired(unsigned int amount)
-{	if (_hitPoints <= 0)
+{	
+	int overload = amount;
+	if (overload < 0)
+	{
+		std::cout << "I wont fall in that trap\n";
+		return ;
+	}
+	if (_hitPoints <= 0)
 	{
 		std::cout << _name << "is dead" << std::endl;
 	}
@@ -107,12 +117,12 @@ void		ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		std::cout << _name << "use healing artefact "\
-		<< amount << " are restaured to HitPoints" << std::endl \
+		std::cout << _name << "use healing artefact, "\
+		<< amount << " points are restaured to HitPoints" << std::endl \
 		<< _name << "lose 1 Energy point" << std::endl;
 		recoverHitPoints(amount);
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
@@ -132,10 +142,18 @@ void		ClapTrap::lostHitPoints(int damage)
 
 void		ClapTrap::recoverHitPoints(int recover)
 {
+	for (int i = 0; i < recover; i++)
+	{
+		if (_hitPoints + i == 2147483647 && i != recover)
+		{
+			std::cout << "Max limit reached\n";
+			return ;
+		}
+	}
 	_hitPoints += recover;
 }
 
-void		ClapTrap::displayClaptTrap()
+void		ClapTrap::displayClapTrap()const
 {
 	std::cout << _name << std::endl;
 	if (_hitPoints > 0)

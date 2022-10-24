@@ -48,7 +48,7 @@ int	const &		ClapTrap::getEnergyPoints()const
 	return(_energyPoints);
 }
 
-int			ClapTrap::getAttackDamage()
+int			ClapTrap::getAttackDamage()const
 {
 	return(_attackDamage);
 }
@@ -65,17 +65,22 @@ void		ClapTrap::attack(const std::string& target)
 	}
 	else
 	{
-		std::cout << _name << " attacks " \
-		<< target << ", causing " << getAttackDamage()\
-		<< "points of damage" << std::endl \
-		<< _name << " lose 1 Energy point" << std::endl;
+		std::cout << "Claptrap" << _name << " attacks " << target << ", causing " << getAttackDamage()\
+		<< " points of damage" << std::endl;
+		std::cout << _name << " lose 1 Energy point" << std::endl;
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
 {
+	int is_overflow = amount;
+	if (is_overflow < 0)
+	{
+		std::cout << "Attack too low\n";
+		return ;
+	}
 	if (_hitPoints <= 0)
 	{
 		std::cout << getName() << "is dead" << std::endl;
@@ -89,12 +94,19 @@ void		ClapTrap::takeDamage(unsigned int amount)
 		std::cout << _name << " is attacked and lose " \
 		<< amount << " Hit Points" << std::endl;
 		lostHitPoints(amount);
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
 void		ClapTrap::beRepaired(unsigned int amount)
-{	if (_hitPoints <= 0)
+{
+	int is_overflow = amount;
+	if (is_overflow < 0)
+	{
+		std::cout << "Bruv is that shit some poison ?\n";
+		return ;	
+	}
+	if (_hitPoints <= 0)
 	{
 		std::cout << _name << "is dead" << std::endl;
 	}
@@ -104,12 +116,12 @@ void		ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		std::cout << _name << "use healing artefact "\
-		<< amount << " are restaured to HitPoints" << std::endl \
+		std::cout << _name << "use healing artefact, "\
+		<< amount << " points are restaured to HitPoints" << std::endl \
 		<< _name << "lose 1 Energy point" << std::endl;
 		recoverHitPoints(amount);
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }
 
@@ -129,10 +141,18 @@ void		ClapTrap::lostHitPoints(int damage)
 
 void		ClapTrap::recoverHitPoints(int recover)
 {
+	for (int i = 0; i < recover; i++)
+	{
+		if (_hitPoints + i == 2147483647 && i != recover)
+		{
+			std::cout << "Max limit reached\n";
+			return ;
+		}
+	}
 	_hitPoints += recover;
 }
 
-void		ClapTrap::displayClaptTrap()const
+void		ClapTrap::displayClapTrap()const
 {
 	std::cout << _name << std::endl;
 	if (_hitPoints > 0)

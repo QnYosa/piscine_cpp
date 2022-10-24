@@ -1,23 +1,23 @@
-#ifndef DIAMONDTRAP_H
-# define DIAMONDTRAP_H
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-#include "ScavTrap.h"
-#include "FragTrap.h"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 class DiamondTrap :public ScavTrap, public FragTrap
 {
 private:
-	DiamondTrap(/* args */);
 	std::string	_name;
 	/* data */
 public:
+	DiamondTrap();
 	DiamondTrap(std::string & name);
 	DiamondTrap(DiamondTrap const & src);
 	~DiamondTrap();
 	DiamondTrap	&	operator=(DiamondTrap const & src);
-	std::string getName();
-	void setName();
-	void	attack(std::string const & name);
+	std::string 	getName()const;
+	void 			setName(std::string name);
+	void			attack(std::string const & name);
 };
 
 #endif

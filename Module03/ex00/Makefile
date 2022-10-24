@@ -6,7 +6,7 @@ OBJS			 = ${SRCS:%.cpp=%.o}
 
 INCLUDES		= ClapTrap.hpp
 
-CPPFLAGS		 = -Wall -Werror -Wextra -std=c++98 -g -Wshadow 
+CPPFLAGS		 = -Wall -Werror -Wextra -std=c++98 -Wshadow #-g
 
 CXX				 = c++
 

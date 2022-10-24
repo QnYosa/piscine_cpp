@@ -4,6 +4,11 @@
 #include <iostream> 
 #include "Form.hpp"
 
+#define LIGHTBLUE "\033[1;34m"
+#define YELLOW "\033[1;33m"
+#define PURPLE "\033[1;35m"
+#define RESET "\033[0m"
+
 class Form;
 
 class Bureaucrat
@@ -39,7 +44,7 @@ class Bureaucrat
 		int const & 		getGrade()const;
 		void				promotion();
 		void				demotion();
-		void				signForm(Form form);
+		void				signForm(Form & form);
 };
 	std::ostream & operator<<(std::ostream & out, Bureaucrat const & rhs);
 

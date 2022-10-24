@@ -1,11 +1,11 @@
-#include "ScavTrap.h"
+#include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap(): ClapTrap()
 {
 	std::cout << "Default Scavtrap Constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
 	std::cout << "ScavTrap constructor" << std::endl;
 	this->_name = name;
@@ -59,6 +59,6 @@ void		ScavTrap::attack(std::string const & src)
 		<< " points of damage" << std::endl \
 		<< _name << " lose 1 Energy point" << std::endl;
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}	
 }

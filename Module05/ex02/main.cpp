@@ -229,12 +229,146 @@ void	tests_hermes()
 */
 void	test_shrubberry()
 {
-	AForm *shrubbery; 
-	ShrubberyCreationForm trees("Central Park");
-	Bureaucrat Nixon("Richard Nixon", 1);
-	shrubbery = &trees;
-	Nixon.signForm(trees);
-	Nixon.executeForm(trees);
+	try
+	{
+		ShrubberyCreationForm trees("Central Park");
+		Bureaucrat NumberOnePointZero("Number 1.0", 1);
+		NumberOnePointZero.executeForm(trees);
+		NumberOnePointZero.signForm(trees);
+		NumberOnePointZero.executeForm(trees);
+		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
+		WardenVogel.executeForm(trees);
+	}
+	catch(AForm::GradeTooLowException e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(AForm::GradeTooHighException e)
+	{
+		std::cerr << e.what() << '\n';		
+	}
+	catch(...)
+	{
+		std::cerr << "OTHER KIND OF ERROR" << '\n';		
+	}
+	
+}
+
+void	test_shrubberry_nest()
+{
+	try
+	{
+		AForm *shrubbery; 
+		ShrubberyCreationForm trees("Yellowstone");
+		Bureaucrat NumberOnePointZero("Number 1.0", 1);
+		shrubbery = &trees;
+		NumberOnePointZero.executeForm(*shrubbery);
+		NumberOnePointZero.signForm(*shrubbery);
+		NumberOnePointZero.executeForm(*shrubbery);
+		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
+		WardenVogel.executeForm(trees);
+	}
+	catch(ShrubberyCreationForm::GradeTooLowException e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(ShrubberyCreationForm::GradeTooHighException e)
+	{
+		std::cerr << e.what() << '\n';		
+	}
+	catch(...)
+	{
+		std::cerr << "OTHER KIND OF ERROR" << '\n';		
+	}
+	
+}
+
+void	test_robotomy()
+{
+	try
+	{
+		AForm *robotomy; 
+		RobotomyRequestForm trees("Bender");
+		Bureaucrat NumberOnePointZero("Number 1.0", 1);
+		robotomy = &trees;
+		NumberOnePointZero.executeForm(*robotomy);
+		NumberOnePointZero.signForm(*robotomy);
+		NumberOnePointZero.executeForm(*robotomy);
+		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
+		WardenVogel.executeForm(*robotomy);
+	}
+	catch(AForm::GradeTooLowException e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(AForm::GradeTooHighException e)
+	{
+		std::cerr << e.what() << '\n';		
+	}
+	catch(...)
+	{
+		std::cerr << "OTHER KIND OF ERROR" << '\n';		
+	}
+	
+}
+
+
+void	test_robotomy_nest()
+{
+	try
+	{
+		AForm *robotomy; 
+		RobotomyRequestForm form("Bender");
+		Bureaucrat NumberOnePointZero("Number 1.0", 1);
+		robotomy = &form;
+		NumberOnePointZero.executeForm(*robotomy);
+		NumberOnePointZero.signForm(*robotomy);
+		NumberOnePointZero.executeForm(*robotomy);
+		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
+		WardenVogel.executeForm(*robotomy);
+	}
+	catch(RobotomyRequestForm::GradeTooLowException e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(RobotomyRequestForm::GradeTooHighException e)
+	{
+		std::cerr << e.what() << '\n';		
+	}
+	catch(...)
+	{
+		std::cerr << "OTHER KIND OF ERROR" << '\n';		
+	}
+	
+}
+
+void	test_president_nest()
+{
+	try
+	{
+		AForm *Pardon; 
+		PresidentialPardonForm pardonForm("Bender");
+		Bureaucrat NumberOnePointZero("Number 1.0", 1);
+		Pardon = &pardonForm;
+		NumberOnePointZero.executeForm(*Pardon);
+		NumberOnePointZero.signForm(*Pardon);
+		NumberOnePointZero.executeForm(*Pardon);
+		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
+		WardenVogel.executeForm(*Pardon);
+	}
+	catch(RobotomyRequestForm::GradeTooLowException e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(RobotomyRequestForm::GradeTooHighException e)
+	{
+		std::cerr << e.what() << '\n';		
+	}
+	catch(...)
+	{
+		std::cerr << "OTHER KIND OF ERROR" << '\n';		
+	}
+	
 }
 
 int main()
@@ -243,7 +377,14 @@ int main()
 // 	tests_that_will_fail();
 // 	tests_copy_overload();
 // 	tests_hermes();
-	test_shrubberry();
+	test_shrubberry(); // classe bien abstraite 
+	test_shrubberry_nest(); // class bien abstraite
+	test_robotomy_nest();
+	test_robotomy_nest();
+	test_robotomy_nest();
+	test_robotomy_nest();
+	test_robotomy_nest();
+	test_president_nest();
 	// AForm *robotomy;
 	// RobotomyRequestForm benderForm("Bender");
 	// robotomy = &benderForm;

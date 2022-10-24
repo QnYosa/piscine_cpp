@@ -1,4 +1,4 @@
-#include "FragTrap.h"
+#include "FragTrap.hpp"
 
 FragTrap::FragTrap(/* args */)
 {
@@ -58,6 +58,6 @@ void		FragTrap::attack(std::string const & src)
 		<< " points of damage" << std::endl \
 		<< _name << " lose 1 Energy point" << std::endl;
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}
 }

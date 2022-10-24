@@ -1,11 +1,11 @@
-#include "ScavTrap.h"
+#include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap(): ClapTrap()
 {
 	std::cout << "Default Scavtrap Constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
 	std::cout << "ScavTrap constructor" << std::endl;
 	this->_name = name;
@@ -17,6 +17,7 @@ ScavTrap::ScavTrap(std::string name)
 ScavTrap::ScavTrap(ScavTrap const & src):ClapTrap(src)
 {
 	std::cout << "ScavTrap copy constructor" << std::endl;
+	*this = src;
 }
 
 ScavTrap::~ScavTrap()
@@ -58,11 +59,11 @@ void		ScavTrap::attack(std::string const & src)
 	}
 	else
 	{
-		std::cout << _name << " attacks with ScavTrap attack" \
+		std::cout << _name << " attacks with ScavTrap attack " \
 		<< src << ", causing " << getAttackDamage()\
 		<< "points of damage" << std::endl \
 		<< _name << " lose 1 Energy point" << std::endl;
 		lostEnergy();
-		displayClaptTrap();
+		displayClapTrap();
 	}	
 }

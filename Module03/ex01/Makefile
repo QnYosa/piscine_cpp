@@ -4,14 +4,16 @@ SRCS		= main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
-CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -g3
+INCLUDES	= ClapTrap.hpp ScavTrap.hpp
+
+CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -Wshadow #-g3
 
 RM			= rm -f
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-	c++ $(CPPGLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(INCLUDES)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

@@ -1,13 +1,11 @@
-#ifndef FRAGTRAP_H
-# define FRAGTRAP_H
-#include "ClapTrap.h"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+#include "ClapTrap.hpp"
 
 class FragTrap : virtual public ClapTrap
 {
-	protected:
-		/* data */
-		FragTrap(/* args */);
 	public:
+		FragTrap(/* args */);
 		FragTrap(std::string & name);
 		FragTrap(FragTrap const & src);
 		~FragTrap();

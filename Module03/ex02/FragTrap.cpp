@@ -1,6 +1,6 @@
-#include "FragTrap.h"
+#include "FragTrap.hpp"
 
-FragTrap::FragTrap(/* args */)
+FragTrap::FragTrap(/* args */) : ClapTrap()
 {
 	std::cout << "FragTrap default Constructor" << std::endl;
 }
@@ -8,6 +8,7 @@ FragTrap::FragTrap(/* args */)
 FragTrap::FragTrap(FragTrap const & src):ClapTrap(src)
 {
 	std::cout << "FragTrap copy constructor" << std::endl;
+	*this = src;
 }
 
 FragTrap::FragTrap(std::string & name) :ClapTrap(name)
@@ -25,7 +26,7 @@ FragTrap::~FragTrap()
 }
 
 
-void	FragTrap::highFivesGuys()
+void	FragTrap::highFivesGuys()const 
 {
 	std::cout << "High Five guys ?" << std::endl;
 }
@@ -40,25 +41,4 @@ FragTrap &	FragTrap::operator=(FragTrap const & src)
 		this->_attackDamage = src._attackDamage;
 	}
 	return (*this);
-}
-
-void		FragTrap::attack(std::string const & src)
-{
-	if (_hitPoints <= 0)
-	{
-		std::cout << _name << " is dead" << std::endl;
-	}
-	else if (_energyPoints <= 0)
-	{
-		std::cout << _name << " is out of energy" << std::endl;
-	}
-	else
-	{
-		std::cout << _name << " attacks with FragTrap attack " \
-		<< src << ", causing " << getAttackDamage()\
-		<< " points of damage" << std::endl \
-		<< _name << " lose 1 Energy point" << std::endl;
-		lostEnergy();
-		displayClaptTrap();
-	}	
 }

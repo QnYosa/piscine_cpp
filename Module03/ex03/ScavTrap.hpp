@@ -1,20 +1,19 @@
-#ifndef SCAVTRAP_H
-# define SCAVTRAP_H
-
+// #pragma once
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 #include	<iostream>
 #include 	<string>
-#include "ClapTrap.h"
+#include 	"ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap
 {
-	protected:
-		ScavTrap(/* args */);
 	public:
+		ScavTrap(/* args */);
 		ScavTrap(std::string & name);
 		ScavTrap(ScavTrap const & src);
 		~ScavTrap();
 		ScavTrap &	operator=(ScavTrap const & src);
-		void		guardGate();
+		void		guardGate()const;
 		void		attack(std::string const & src );
 };
 
