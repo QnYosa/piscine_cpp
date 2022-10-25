@@ -1,0 +1,9 @@
+serialization 
+	https://isocpp.org/wiki/faq/serialization
+	https://isocpp.org/wiki/faq/serialization#serialize-text-format
+
+
+	reinterpret_cast
+		The result of a reinterpret_cast cannot safely be used for
+		anything other than being cast back to its 
+		original type. Other uses are, at best, nonportable.

@@ -1,49 +1,39 @@
 #include "utils.hpp"
 
-int is_float(std::string const & number, int & found)
+int is_float(const char *number, int & found)
 {
-	int f = 0;
-	int dot = 0;
-	int minus = 0;
-	for (int i = 0; number[i]; i++)
-	{
-		if (number[i] == '.')
-			dot++;
-		if (number[i] == 'f')
-			f++;
-		if (number[i] == '-')
-			minus++; 
-		if (!isdigit(number[i]) && number[i] != 'f' && number[i] != '.' && number[i] != '-')
-			return (-1);
-	}
-	if (f != 1 || dot != 1 || minus > 1)
-		return (-2);
+	char *pend = NULL;
+	std::string num = number;
+	if (num.length() < 2)
+		return (-1);
+	strtof(number, &pend);
+	if (*(pend + 1) != 0)
+		return (-1);
 	found = 1;
 	return (0);
 }
 
-int is_double(std::string const & number, int & found)
+int is_double(const char *number, int & found)
 {
+	char *pend = NULL;
+	std::string num = number;
 	int dot = 0;
-	int minus = 0;
-	for (int i = 0; number[i]; i++)
+	for (int i = 0; num[i]; i++)
 	{
-		if (number[i] == '.')
+		if (num[i] == '.')
 			dot++;
-		if (number[i] == '-')
-			minus++;
-		if (!isdigit(number[i]) && number[i] != '.' && number[i] != '-')
-			return (-1);
 	}
-	if (dot != 1 || minus > 1)
-		return (-2);
+	if (dot == 0)
+		return (-1);
+	strtod(number, &pend);
+	if (*pend != 0)
+		return (-1);
 	found = 2;
 	return (0);
 }
 
 int is_int(std::string const & number, int & found)
 {
-	// long long pour overflow 
 	int minus = 0;
 	for (int i = 0; number[i]; i++)
 	{
@@ -67,21 +57,42 @@ int	is_char(std::string const & number, int & found)
 	return (0);
 }
 
-void	add_zero_f(std::string const & number)
+void	display_impossible()
 {
-	for(int i = 0; number[i]; i++)
-	{
-		if (number[i] == 'f' && number[i - 1] == '.')
-			std::cout << ".0";
-	}
-	std::cout << "f\n";
+	std::cout << "char:	impossible\n";
+	std::cout << "int:	impossible\n";
+	std::cout << "float:	nanf\n";
+	std::cout << "double:	nan\n";
 }
 
-void	add_zero_d(std::string const & number)
-{
-	for(int i = 0; number[i]; i++)
-	{
-		if (number[i] == '.' && number[i + 1] == 0)
-			std::cout << ".0";
-	}
-}
+// void	add_zero_f(std::string const & number)
+// {
+// 	int dot = 0;
+// 	int written = 0;
+// 	for(int i = 0; number[i]; i++)
+// 	{
+// 		if (number[i] == 'f' && number[i - 1] == '.')
+// 		{
+// 			std::cout << ".0";
+// 			written++;
+// 		}
+// 		if (number[i] == '.')
+// 			dot = i;
+// 	}
+// 	// std::cout << "dot = " << dot << std::endl;
+// 	if (written == 0)
+// 	{
+// 		if (!dot)
+// 			std::cout << ".";
+// 		for (int i = 0; dot + i < static_cast<int>(number.length()); i++)
+// 		{
+// 			if (number[dot + i] == '0')
+// 				std::cout << number[dot + i];
+// 				// std::cout << "";
+// 			std::cout <<  *((&number)+(dot + i)) << std::endl;
+// 		} 
+// 	}
+// 	// std::cout << "add= " << (&number)+4 << std::endl;
+// 	std::cout << "f\n";
+// }
+

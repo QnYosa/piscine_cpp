@@ -1,18 +1,18 @@
-NAME			= convert
+NAME			= ex01
 
-SRCS			= main.cpp errors.cpp utils.cpp
+SRCS			= main.cpp
 
-INCLUDES		= utils.hpp
+INCLUDES		= Data.hpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
 CXX				= c++
 
-CPPFLAGS		= -Wall -Werror -Wextra -std=c++98
+CPPFLAGS		= -Wall -Werror -Wextra -g3 -std=c++98
 
-RM				= rm -f
+RM 				= rm -f
 
-all: $(NAME)
+all:	$(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)

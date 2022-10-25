@@ -1,0 +1,10 @@
+42.f => 42.0f
+
+42f => impossible
+
+42.000000000000f
+
+42.03f
+
+42.0f doit donner 42.0f on a 42f # ok 
+42.f = 42.0f
