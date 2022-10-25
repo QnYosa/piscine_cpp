@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <iostream>
-#include <ctype.h>
-#include "errors.hpp"
+#include "utils.hpp"
 
 int main (int argc, char **argv)
 {
@@ -21,14 +18,7 @@ int main (int argc, char **argv)
 		{
 			char *pend = NULL;
 			float f = strtof(argv[1], &pend);
-			// std::cout << f << std::endl;
-			// std::cout << *pend << std::endl;
-			print_float(f);
-			// print_int(f);
-			// print_double(f);
-			// print_char(f);
-			// std::cout << "hello float\n";
-			/* code */
+			print_float(f, argv[1]);
 			break;
 		}
 		case 2:
@@ -40,32 +30,18 @@ int main (int argc, char **argv)
 		}	
 		case 3:
 		{
-			std::cout << "je suis un int\n";
+			int i = atoi(argv[1]);
+			print_int(i);
 			break;
 		}
 		case 4:
 		{
-			// char = strtod(argv[1], &pend);
-			// std::cout << "is a char\n";
+			char c = argv[1][0];
+			print_char(c);
 			break;
 		}
 		default:
-			std::cout << "can't do shit bruv\n";
+			display_impossible();
 			break;
 	}
-	//strtof
-	//strtod
-	// atoi
-	// int nb = static_cast<int>(argv[1][0]);
-	// std::cout << nb << std::endl;
-	// tout mettre en nombre sauf si char pas de atoi
-	// d'abord checker si c'est un float ou un double.
-	// je recois c 
-	// je transforme ca en int puis en char puis en double 
-	// int a = 42;
-	// char c = static_cast <char>(a);
-	// float f = static_cast <float>(a);
-	// std::cout << a << std::endl;
-	// std::cout << c << std::endl;
-	// std::cout << f << std::endl;
 }

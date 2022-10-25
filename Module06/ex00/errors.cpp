@@ -1,4 +1,4 @@
-#include "errors.hpp"
+#include "utils.hpp"
 
 int is_float(std::string const & number, int & found)
 {
@@ -67,56 +67,21 @@ int	is_char(std::string const & number, int & found)
 	return (0);
 }
 
-void	print_float(float & f)
+void	add_zero_f(std::string const & number)
 {
-	float to_f = static_cast<float>(f);
-	std::cout << "float: " << to_f << "f" << std::endl;
-
-	double to_d = static_cast<double>(f);
-	std::cout << "double: " << to_d << std::endl;
-
-	int to_int = static_cast<int>(f);
-	std::cout << "int: " << to_int << std::endl;
-
-	char to_c = static_cast<char>(f);
-	if (to_c < 31)
-		std::cout << "Non displayable\n";
-	else 
-		std::cout << "char: " << to_c << std::endl;
+	for(int i = 0; number[i]; i++)
+	{
+		if (number[i] == 'f' && number[i - 1] == '.')
+			std::cout << ".0";
+	}
+	std::cout << "f\n";
 }
 
-void	print_double(double const & d)
+void	add_zero_d(std::string const & number)
 {
-	float to_f = static_cast<float>(d);
-	std::cout << "float: " << to_f << "f" << std::endl;
-
-	double to_d = static_cast<double>(d);
-	std::cout << "double: " << to_d << std::endl;
-
-	int to_int = static_cast<int>(d);
-	std::cout << "int: " << to_int << std::endl;
-
-	char to_c = static_cast<char>(d);
-	if (to_c < 31)
-		std::cout << "Non displayable\n";
-	else 
-		std::cout << "char: " << to_c << std::endl;
-}
-
-void	print_char(char const & c)
-{
-	float to_f = static_cast<float>(c);
-	std::cout << "float: " << to_f << "f" << std::endl;
-
-	double to_d = static_cast<double>(c);
-	std::cout << "double: " << to_d << std::endl;
-
-	int to_int = static_cast<int>(c);
-	std::cout << "int: " << to_int << std::endl;
-
-	char to_c = static_cast<char>(c);
-	if (to_c < 31)
-		std::cout << "Non displayable\n";
-	else 
-		std::cout << "char: " << to_c << std::endl;
+	for(int i = 0; number[i]; i++)
+	{
+		if (number[i] == '.' && number[i + 1] == 0)
+			std::cout << ".0";
+	}
 }
