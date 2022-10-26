@@ -1,11 +1,11 @@
 #include "Dog.hpp"
 
-Dog::Dog(/* args */):Animal("Dog")
+Dog::Dog(): Animal("Dog")
 {
 	std::cout << "Dog default constructor" << std::endl;
 }
 
-Dog::Dog(Dog const & src)
+Dog::Dog(Dog const & src): Animal("Dog")
 {
 	std::cout << "Dog copy constructor" << std::endl;
 	*this = src;
@@ -25,5 +25,5 @@ Dog &	Dog::operator=(Dog const & src)
 
 void		Dog::makeSound()const
 {
-	std::cout << "WAF WAF" << std::endl;
+	std::cout << "WAF WAF\n";
 }

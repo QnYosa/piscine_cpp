@@ -6,7 +6,7 @@ AAnimal::AAnimal(/* args */):_type("Who Cares?")
 }
 
 
-AAnimal::AAnimal(AAnimal const & src)
+AAnimal::AAnimal(AAnimal const & src):_type("Who Cares?")
 {
 	std::cout << "AAnimal copy constructor" << std::endl;
 	*this = src;

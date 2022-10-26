@@ -6,19 +6,17 @@
 
 class WrongAnimal
 {
-private:
-	/* data */
-	std::string	_type;
-public:
-	WrongAnimal(/* args */);
-	WrongAnimal(WrongAnimal const & src);
-	~WrongAnimal();
-	WrongAnimal &	operator=(WrongAnimal const & src);
-	std::string		getType()const;
-	void			makeSound()const;
+	private:
+		/* data */
+		std::string	_type;
+	public:
+		WrongAnimal(/* args */);
+		WrongAnimal(std::string const & type);
+		WrongAnimal(WrongAnimal const & src);
+		~WrongAnimal();
+		WrongAnimal &	operator=(WrongAnimal const & src);
+		std::string		getType()const;
+		void			makeSound()const;
 };
-
-
-
 
 #endif

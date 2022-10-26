@@ -4,6 +4,10 @@ WrongAnimal::WrongAnimal(/* args */):_type("Unknown")
 {
 	std::cout << "WrongAnimal constructor" << std::endl;
 }
+WrongAnimal::WrongAnimal(std::string const & type): _type(type)
+{
+	std::cout << "WrongAnimal string constructor" << std::endl;
+}
 
 WrongAnimal::WrongAnimal(WrongAnimal const & src)
 {

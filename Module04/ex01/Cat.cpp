@@ -1,12 +1,11 @@
 #include "Cat.hpp"
 
-Cat::Cat(/* args */):Animal("Cat")
+Cat::Cat(/* args */):Animal("Cat"), _attribute(new  Brain())
 {
 	std::cout << "Cat default constructor" << std::endl;
-	_attribute = new Brain();
 }
 
-Cat::Cat(Cat const & src):Animal("Cat")
+Cat::Cat(Cat const & src):Animal("Cat"), _attribute(new  Brain())
 {
 	std::cout << "Cat copy constructor" << std::endl;
 	*this = src;
@@ -23,7 +22,8 @@ Cat & Cat::operator=(Cat const & src)
 	if (this != &src)
 	{
 		this->setType(src.getType());
-		this->_attribute = src._attribute;
+		delete  _attribute;
+		this->_attribute = new Brain(src.getAttribute());
 	}
 	return (*this);
 }
@@ -43,7 +43,13 @@ void				Cat::getIdeas()const
 	this->_attribute->showIdeas();
 }
 
+void				Cat::getObsession(std::string const & idea)
+{
+	this->_attribute->obssession(idea);
+}
+
 Brain	&			Cat::getAttribute()const
 {
 	return (*_attribute);
 }
+

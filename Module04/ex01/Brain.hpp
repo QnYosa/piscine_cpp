@@ -5,7 +5,6 @@
 class Brain
 {
 	private:
-		/* data */
 		std::string		_ideas[100];
 		int				_last;
 	public:

@@ -17,6 +17,7 @@ class Cat: public Animal
 		void						makeSound()const;
 		void						getIdeas()const;
 		void						setIdea(std::string const & idea);
+		void						getObsession(std::string const & idea);
 		Brain &						getAttribute()const;
 
 };

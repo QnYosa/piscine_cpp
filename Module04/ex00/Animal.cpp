@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal(/* args */):_type("Who Cares?")
+Animal::Animal():_type("Unknown")
 {
 	std::cout << "Animal default constructor" << std::endl;
 }

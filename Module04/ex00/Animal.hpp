@@ -5,7 +5,6 @@
 class Animal
 {
 	protected:
-		/* data */
 		std::string	_type;
 	public:
 		Animal(/* args */);

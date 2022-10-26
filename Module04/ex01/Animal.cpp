@@ -1,12 +1,12 @@
 #include "Animal.hpp"
 
-Animal::Animal(/* args */):_type("Who Cares?")
+Animal::Animal():_type("Who Cares?")
 {
 	std::cout << "Animal default constructor" << std::endl;
 }
 
 
-Animal::Animal(Animal const & src)
+Animal::Animal(Animal const & src): _type("Who Cares")
 {
 	std::cout << "Animal copy constructor" << std::endl;
 	*this = src;

@@ -4,7 +4,7 @@ SRCS 		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS		= ${SRCS:%.cpp=%.o}
 
-CPPFLAGS	=  -Wall -Werror -Wextra -std=c++98 
+CPPFLAGS	=  -Wall -Werror -Wextra -std=c++98 #-g
 
 RM			= rm -f
 
