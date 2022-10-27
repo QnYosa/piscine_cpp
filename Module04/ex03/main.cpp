@@ -3,6 +3,7 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 
+
 int main (void)
 {
 	AMateria 	**floor;
@@ -30,56 +31,36 @@ int main (void)
 	AMateria	*Acure = cure;
 	Aice = Acure;
 	Aice->use(*nemico);
-	std::cout << Aice->getType() << "desormais de type cure " << std::endl;
+	std::cout << Aice->getType() << " desormais de type cure " << std::endl;
 	
 	std::cout << "==================TEST CHARACTER===================" << std::endl << std::endl;
 	Character	*cpy = new Character();
 	std::cout << "Name: " << cpy->getName() << std::endl;
 	delete cpy;
-	cpy =  NULL;
 	cpy = main;
 	std::cout << "New Name: " << cpy->getName() << std::endl;
-	// std::cout << cpy.getName() << std::endl;
+	main->use(-1, *nemico); // test valeur impossible INDEX INVALID
 	main->use(0, *nemico); // test a vide pas de segfault
 	main->use(3, *nemico); // idem
+	main->use(8, *nemico); // test a vide pas de segfault
 	main->equip(glace);
 	main->equip(cure);
-	// test a faire envoyer plein de equip
+	main->equip(vaccine);
 	main->use(1, *nemico);
 	main->use(3, *nemico);
+	main->use(0, *nemico);
+	main->use(4, *nemico);
 	main->unequip(5); // pas de crash
 	main->unequip(2); // pas de crash alors qu'on a pas d'arme a cet index
+	main->unequip(0); // on perd l'arme:  gestion du floor
+	std::cout << "================LAST ATTACKS==============\n";
+	main->use(0, *nemico);
 	main->use(3, *nemico);
-
-	std::cout << "==================TEST MATERIASOURCE===================" << std::endl << std::endl;
-	std::cout << glace->getType() << std::endl;
-	std::cout << main->getName() << std::endl;
-	// delete vaccine;
-	// delete glace;
-	// delete cure;
 	delete main;
+	delete glace;
+	delete cure;
 	delete nemico;
 	delete vaccine;
-	// delete cpy;
-	// delete glace;
-	// std::string *tab[4];
-	// std::string hello = "Sanlut";
-	// tab[0] = new std::string("hello");
-	// tab[1] = &hello;
-	// // std::cout << ;
-	// std::cout << tab[0] << std::endl;
-	// std::cout << tab[1] << std::endl;
-	// std::string test = "test";
-	// std::string *string = *(&tab[0]);
-	// *string = "";
-	// *string = nullptr; //segfault 
-	// *(string) = nullptr;
-	// std::cout << string << std::endl;
-	// tab[0] = &string;
-	// std::cout << *tab[0] << std::endl;
-	// std::cout << *tab[1] << std::endl;
-	// delete[] tab[0];
-
 	std::cout << "==================MAIN CORRECTION=====================" << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -88,13 +69,17 @@ int main (void)
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	AMateria *tmp2;
+	tmp2 = src->createMateria("cure");
+	me->equip(tmp2);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me->unequip(0);
 	delete bob;
 	delete me;
 	delete src;
+	delete tmp;
+	delete tmp2;
 	return 0;
 }

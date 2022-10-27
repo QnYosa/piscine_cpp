@@ -20,6 +20,9 @@ class AMateria
 		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* 	clone() const = 0;
 		virtual void 		use(ICharacter& target);
+		virtual int			getIsUsed()const = 0;
+		virtual void		setIsUsed(int x) = 0;
+		// AMateria * 			getMateriaN(int idx)const;
 };
 
 #endif

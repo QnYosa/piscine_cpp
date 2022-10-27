@@ -1,0 +1,27 @@
+le sol on doit savoir quelles materas sont en la 
+possession d'un personnage sinon on ne peut ps s'en equiper.
+
+
+on a un floor ou on met les armes non utlisees
+quand on s'equipe la materia sort du floor et on lla met dans le character
+lorsqu'on s'equipe on regarde d'abord si l'arme est dans le sol ou pas 
+on la prend  on la met dans le perso et on la supprime du floor 
+
+static AMateria **floor;
+*Floor = NULL;
+**Floor = NULL;
+
+static void **
+
+transfer_floor(&Amateria)
+{
+	int size = 0;
+	for (int i = 0; Floor[i]; i++)
+		size++;
+	*floor = new AMateria[size+1];
+}
+
+equip (AMateria x)
+{
+	transfer_floor(tab)
+}

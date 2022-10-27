@@ -1,8 +1,0 @@
-operator = AMateria 
-Character::copy constructor cpp 
-Character::operator = 
-
-detruire les materias dans le destructor
-	de character
-
-detruire les materias quand on fait une copie

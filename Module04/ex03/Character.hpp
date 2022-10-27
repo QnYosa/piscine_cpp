@@ -10,7 +10,7 @@ class Character : public ICharacter
 	private:
 		/* data */
 		std::string _name;
-		AMateria*	_inventaire[4];
+		AMateria	*_inventaire[4];
 	public:
 		Character(/* args */);
 		Character(std::string const & type);
