@@ -15,9 +15,12 @@ class Cat: public AAnimal
 		Cat & 						operator=(Cat const & src);
 		~Cat();
 		void						makeSound()const;
-		std::string*				getAttribute()const;
 		void						getIdeas()const;
 		void						setIdea(std::string const & idea);
+		void						getObsession(std::string const & idea);
+		Brain	&					getAttribute()const;
+
+
 };
 
 

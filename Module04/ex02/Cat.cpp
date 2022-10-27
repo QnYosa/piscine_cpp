@@ -23,7 +23,7 @@ Cat & Cat::operator=(Cat const & src)
 	{
 		this->setType(src.getType());
 		delete  _attribute;
-		this->_attribute = src._attribute;
+		this->_attribute = new Brain(src.getAttribute());
 	}
 	return (*this);
 }
@@ -38,12 +38,17 @@ void				Cat::setIdea(std::string const & idea)
 	this->_attribute->setIdea(idea);
 }
 
-std::string*		Cat::getAttribute()const
-{
-	return (this->_attribute->getIdeas());
-}
-
 void				Cat::getIdeas()const
 {
 	this->_attribute->showIdeas();
+}
+
+Brain	&			Cat::getAttribute()const
+{
+	return (*_attribute);
+}
+
+void				Cat::getObsession(std::string const & idea)
+{
+	this->_attribute->obssession(idea);
 }

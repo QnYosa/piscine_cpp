@@ -5,14 +5,22 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 #include <stdio.h>
-#define	SIZE 4
+#define	SIZE 100
 
 void	fillChenil(AAnimal *chenil[])
 {
 	for (int i = 0; i < SIZE/2; i++)
-		chenil[i] = new Dog();
+	{
+		Dog *doggo = new Dog();
+		doggo->getObsession("faire un compliment");
+		chenil[i] = doggo;
+	}
 	for (int i = SIZE/2; i < SIZE; i++)
-		chenil[i]= new Cat();
+	{
+		Cat *kitty = new Cat();
+		kitty->getObsession("Changer de chaine");
+		chenil[i]= kitty;
+	}
 }
 
 void	destroyChenil(AAnimal *chenil[])
@@ -21,17 +29,32 @@ void	destroyChenil(AAnimal *chenil[])
 		delete chenil[i];
 }
 
+
+void	check_ideas(AAnimal *chenil[])
+{
+	for (int i = 0; i < SIZE/2; i++)
+	{
+		Dog *doggo = reinterpret_cast<Dog *>(chenil[i]);
+		doggo->getIdeas();
+	}
+	for (int i = SIZE/2; i < SIZE; i++)
+	{
+		Cat *kitty = reinterpret_cast<Cat *>(chenil[i]);
+		kitty->getIdeas();
+	}	
+}
+
 int main()
 {
-	// AAnimal *Chenil[SIZE];
-	// fillChenil(Chenil);
-	// std::cout << "Start" << std::endl;
-	// for(int i = 0; i < SIZE; i++)
-	// {
+	AAnimal *Chenil[SIZE];
+	fillChenil(Chenil);
+	std::cout << "Start" << std::endl;
+	for(int i = 0; i < SIZE; i++)
+	{
 
-	// 	std::cout << Chenil[i]->getType() << std::endl;
-	// 	Chenil[i]->makeSound();
-	// }
+		std::cout << Chenil[i]->getType() << std::endl;
+		Chenil[i]->makeSound();
+	}
 	Brain cerebro;
 	cerebro.setIdea("Aller sur Mars");
 	cerebro.setIdea("Sortir");
@@ -48,6 +71,6 @@ int main()
 	eliott.getIdeas();
 	ani->getIdeas();
 	ani->makeSound();
-	// destroyChenil(Chenil);
+	destroyChenil(Chenil);
 	return 0;
 }

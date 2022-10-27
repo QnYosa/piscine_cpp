@@ -9,18 +9,7 @@
 
 void	fillChenil(Animal *chenil[])
 {
-	for (int i = 0; i < SIZE/2; i++)
-	{
-		Dog *doggo = new Dog();
-		doggo->getObsession("faire un compliment");
-		chenil[i] = doggo;
-	}
-	for (int i = SIZE/2; i < SIZE; i++)
-	{
-		Cat *kitty = new Cat();
-		kitty->getObsession("Changer de chaine");
-		chenil[i]= kitty;
-	}
+
 }
 
 void	destroyChenil(Animal *chenil[])
@@ -42,6 +31,7 @@ void	check_ideas(Animal *chenil[])
 		kitty->getIdeas();
 	}	
 }
+
 int main()
 {
 	Animal *Chenil[SIZE];

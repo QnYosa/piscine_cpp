@@ -5,7 +5,7 @@ Brain::Brain(/* args */):_last(0)
 	std::cout << "Brain Default Constructor" << std::endl;
 }
 
-Brain::Brain(Brain const & src)
+Brain::Brain(Brain const & src):_last(0)
 {
 	std::cout << "Brain Copy Constructor" << std::endl;
 	*this = src;

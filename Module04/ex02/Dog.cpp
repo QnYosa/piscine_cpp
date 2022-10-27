@@ -1,12 +1,11 @@
 #include "Dog.hpp"
 
-Dog::Dog(/* args */):AAnimal("Dog")
+Dog::Dog(/* args */):AAnimal("Dog"), _attribute(new Brain())
 {
 	std::cout << "Dog default constructor" << std::endl;
-	_attribute = new Brain();
 }
 
-Dog::Dog(Dog const & src):AAnimal("Dog")
+Dog::Dog(Dog const & src):AAnimal("Dog"), _attribute(new Brain())
 {
 	std::cout << "Dog copy constructor" << std::endl;
 	*this = src;
@@ -14,8 +13,8 @@ Dog::Dog(Dog const & src):AAnimal("Dog")
 
 Dog::~Dog()
 {
+	delete _attribute;
 	std::cout << "Dog destructor" << std::endl;
-	// delete _attribute;
 }
 
 Dog &	Dog::operator=(Dog const & src)
@@ -23,7 +22,8 @@ Dog &	Dog::operator=(Dog const & src)
 	if (this != &src)
 	{
 		this->setType(src.getType());
-		this->_attribute = src._attribute; // checker si meme adresse
+		delete _attribute;
+		this->_attribute = new Brain(src.getAttribute()); // checker si meme adresse
 	}
 	return (*this);
 }
@@ -33,10 +33,15 @@ void		Dog::makeSound()const
 	std::cout << "WAF WAF" << std::endl;
 }
 
-std::string*		Dog::getAttribute()const
+Brain	&			Dog::getAttribute()const
 {
-	return (this->_attribute->getIdeas());
+	return (*_attribute);
 }
+
+// std::string*		Dog::getAttribute()const
+// {
+// 	return (this->_attribute->getIdeas());
+// }
 
 void				Dog::setIdea(std::string const & idea)
 {
@@ -46,4 +51,9 @@ void				Dog::setIdea(std::string const & idea)
 void				Dog::getIdeas()const
 {
 	this->_attribute->showIdeas();
+}
+
+void				Dog::getObsession(std::string const & idea)
+{
+	this->_attribute->obssession(idea);
 }

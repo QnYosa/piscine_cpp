@@ -43,13 +43,13 @@ void				Cat::getIdeas()const
 	this->_attribute->showIdeas();
 }
 
-void				Cat::getObsession(std::string const & idea)
-{
-	this->_attribute->obssession(idea);
-}
-
 Brain	&			Cat::getAttribute()const
 {
 	return (*_attribute);
 }
 
+
+void				Cat::getObsession(std::string const & idea)
+{
+	this->_attribute->obssession(idea);
+}

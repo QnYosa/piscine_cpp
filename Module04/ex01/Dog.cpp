@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(/* args */):Animal("Dog"), _attribute(new Brain())
+Dog::Dog(/* args */):Animal("Dog")
 {
 	std::cout << "Dog default constructor" << std::endl;
 }
