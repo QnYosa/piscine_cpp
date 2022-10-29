@@ -10,7 +10,8 @@ AForm::AForm(std::string const & name): _name(name), _signed(false), _gradeToSig
 	std::cout << PURPLE << "Form string constructor\n" << RESET;
 }
 
-AForm::AForm(std::string const & name, bool is_signed, const int gradeToSign, const int gradeToExecute): _name(name), _signed(is_signed), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+AForm::AForm(std::string const & name, bool is_signed, const int gradeToSign, const int gradeToExecute): \
+_name(name), _signed(is_signed), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	if (gradeToSign > 150)
 		throw (AForm::GradeTooLowException());

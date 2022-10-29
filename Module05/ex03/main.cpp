@@ -388,11 +388,21 @@ int main()
 	Intern Ryan;
 	AForm* e = Ryan.makeForm("robotomy for bender", "bender");
 	std::cout << *e;
+	AForm* f = Ryan.makeForm("shrubbery for bender", "bender");
+	std::cout << *f;
+	AForm* d = Ryan.makeForm("robotomy for bender", "bender");
+	std::cout << *d;
+	AForm* fail = Ryan.makeForm("do something and make it into a form", "bender");
+	if (fail)
+		std::cout << *fail;
 	// std::cout << *de;
 	// AForm *robotomy;
 	// RobotomyRequestForm benderForm("Bender");
 	// robotomy = &benderForm;
 	// std::cout << benderForm.getGradeToExecute() << std::endl;
 	// std::cout << robotomy->getName();
+	delete e;
+	delete f;
+	delete d;
 	return (0);
 }

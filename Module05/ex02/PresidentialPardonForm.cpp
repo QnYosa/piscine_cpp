@@ -1,14 +1,15 @@
 #include "PresidentialPardonForm.hpp"
 
-// PresidentialPardonForm::PresidentialPardonForm()
-// {
-// 	std::cout << YELLOW << "PresidentialPardonForm constructor\n" << RESET;
-// }
+PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardonForm", false, 25, 5), _target("Unknown")
+{
+	std::cout << YELLOW << "PresidentialPardonForm constructor\n" << RESET;
+}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const & target): AForm("PresidentialPardonForm", false, 25, 5), _target(target)
 {
 	std::cout << YELLOW << "PresidentialPardonForm string constructor\n" << RESET;
 }
+
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src) : AForm(src)
 {
 	std::cout << YELLOW << "PresidentialPardonForm copy constructor\n" << RESET;

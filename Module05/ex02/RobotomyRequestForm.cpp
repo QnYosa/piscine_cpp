@@ -1,19 +1,21 @@
 #include "RobotomyRequestForm.hpp"
 
-// RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", false, 72, 45)
-// {
-// 	std::cout << YELLOW << "Robotomy Request Form constructor\n" << RESET;
-// }
+RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", false, 72, 45), _target("Unknown")
+{
+	std::cout << YELLOW << "Robotomy Request Form constructor\n" << RESET;
+}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const & target): AForm("RobotomyRequestForm", false, 72, 45), _target(target)
 {
 	std::cout << YELLOW << "Robotomy Request Form string constructor\n" << RESET;
 }
+
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src) : AForm(src)
 {
 	std::cout << YELLOW << "Robotomy Request Form copy constructor\n" << RESET;
 	*this = src;
 }
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	std::cout << GREY << "Robotomy Request Form destructor\n" << RESET;

@@ -181,15 +181,16 @@ void	tests_copy_overload()
 {
 	std::cout << LIGHTBLUE << "\n====================TESTS COPY OVERLOAD==========================\n" << RESET;
 	{
-		Form LIGHTBLUEundant;
+		Form redundant;
 		Form permit("Permis de conduire");
+		std::cout << redundant;
 		std::cout << permit;
 		Form complete("Stupid Form", true, 45, 20);
 		std::cout << "=====COPY======\n";
-		std::cout << LIGHTBLUEundant;
+		std::cout << redundant;
 		std::cout << complete;
-		LIGHTBLUEundant = complete;
-		std::cout << LIGHTBLUEundant;
+		redundant = complete;
+		std::cout << redundant;
 	}
 }
 
@@ -205,7 +206,7 @@ void	tests_hermes()
 		std::cout << hermes << std::endl;
 		std::cout << randForm;
 		hermes.signForm(randForm);
-		std::cout << randForm;
+		std::cout << randForm; // le frmulaire a ete signe 
 		hermes.signForm(signedForm); // already signed
 		hermes.signForm(importantForm); // grade too low 
 	}

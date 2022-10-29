@@ -5,13 +5,13 @@ Bureaucrat::Bureaucrat(/* args */): _name("Unknown"), _grade(150)
 	std::cout << YELLOW << "Bureaucrat default constructor \n" << RESET;
 }
 
-Bureaucrat::Bureaucrat(int grade): _name("Unknown")
+Bureaucrat::Bureaucrat(int grade): _name("Unknown"), _grade(grade)
 {
 	if (grade < 1)
 		throw (GradeTooHighException());
 	else if (grade > 150)
 		throw (GradeTooLowException());
-	_grade = grade;
+	// _grade = grade;
 	std::cout << YELLOW << "Bureaucrat int constructor \n" << RESET;
 }
 

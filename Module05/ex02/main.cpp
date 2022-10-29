@@ -229,6 +229,7 @@ void	tests_hermes()
 */
 void	test_shrubberry()
 {
+	std::cout << "============TEST SHRUBBERY================\n";
 	try
 	{
 		ShrubberyCreationForm trees("Central Park");
@@ -256,6 +257,7 @@ void	test_shrubberry()
 
 void	test_shrubberry_nest()
 {
+	std::cout << "==================TEST SHRUBBERY NEST====================\n";
 	try
 	{
 		AForm *shrubbery; 
@@ -267,6 +269,7 @@ void	test_shrubberry_nest()
 		NumberOnePointZero.executeForm(*shrubbery);
 		Bureaucrat WardenVogel("Warden Vogel", 145); // le vrai est de grade 135
 		WardenVogel.executeForm(trees);
+		std::cout << "============SHRUBBERY TEST DONE============\n";
 	}
 	catch(ShrubberyCreationForm::GradeTooLowException e)
 	{

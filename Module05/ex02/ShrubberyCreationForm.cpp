@@ -1,9 +1,9 @@
 #include"ShrubberyCreationForm.hpp"
 
-// ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137)
-// {
-// 	std::cout << YELLOW << "ShrubberyCreationForm constructor\n" << RESET;
-// }
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137), _target("Uknown")
+{
+	std::cout << YELLOW << "ShrubberyCreationForm constructor\n" << RESET;
+}
 
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target) : AForm("ShrubberyCreationForm", false, 145, 137), _target(target)
