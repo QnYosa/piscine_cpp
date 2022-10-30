@@ -1,8 +1,8 @@
 NAME			= convert
 
-SRCS			= main.cpp errors.cpp utils.cpp
+SRCS			= main.cpp Utils.cpp
 
-INCLUDES		= utils.hpp
+INCLUDES		= Utils.hpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 

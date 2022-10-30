@@ -4,14 +4,14 @@
 uintptr_t serialize(t_Data* ptr)
 {
 	uintptr_t uiptr = reinterpret_cast<uintptr_t>(ptr);
-	std::cout << uiptr << std::endl;
+	// std::cout << uiptr << std::endl;
 	return (uiptr);
 }
 
 t_Data* deserialize(uintptr_t raw)
 {
 	t_Data* data_ptr = reinterpret_cast<t_Data*>(raw);
-	std::cout << data_ptr << std::endl;
+	// std::cout << data_ptr << std::endl;
 	return(data_ptr);
 }
 
@@ -39,13 +39,16 @@ int main()
 	std::cout << data->index << std::endl;
 	std::cout << *data->item << std::endl;
 	std::cout << data->price << std::endl;
+	std::cout << data << std::endl;
 	uintptr_t ptr = serialize(data);
+	
 	t_Data *data2 = NULL;
 	data2 = deserialize(ptr);
 	std::cout << "============data2======\n";
 	std::cout << data2->index << std::endl;
 	std::cout << *data2->item << std::endl;
 	std::cout << data2->price << std::endl;
+	std::cout << data2<< std::endl;
 	delete data->item;
 	delete data;
 }
