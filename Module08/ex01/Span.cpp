@@ -38,20 +38,55 @@ void	Span::addNumber(int x)
 	_v.insert(x);
 }
 
-void	Span::shortestSpan()
+int		Span::shortestSpan()const
 {
-	// trouver pplus petit ecart entre deux nombres
-	set::iterator	i;
-	// set::iterator	
-	for (i = _v.begin(); i!= _v.end(); i++)
+	set::iterator	iter;
+	set::iterator	iter_min;
+	int min;
+	int	i = 0;
+	int result = 0;
+	for (iter = _v.begin(); iter!= _v.end(); iter++)
 	{
-
+		if (i == 1)
+			iter_min = _v.begin();
+		if (i != 0)
+		{
+			result = *iter - *iter_min;
+			// if (result < 2)
+			// {
+			// 	std::cout << "iter = " << *iter << " && iter - 1 = " << (*iter) - 1 << std::endl;
+			// }
+			if (result <= min)
+				min = result;
+			iter_min++;
+		}
+		i++;
 	}
+	return (min);
 }
 
-int		Span::longestSpan()
+int		Span::longestSpan()const
 {
 	if (_v.size() <= 1)
 		throw(std::exception());
 	return (*(_v.rbegin()) - *(_v.begin()));
+}
+
+void	Span::display()const
+{
+	set::iterator	i;
+	for (i = _v.begin(); i != _v.end(); i++)
+		std::cout << *i << std::endl;
+}
+
+int		Span::getSize()const
+{
+	return (_size);
+}
+
+std::ostream 	& operator<<(std::ostream & out, Span const & src)
+{
+	src.display();
+	out << "size = " <<src.getSize() << std::endl;
+	return (out);
 }

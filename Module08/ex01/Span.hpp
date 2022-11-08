@@ -7,7 +7,7 @@
 class Span
 {
 	private:  
-		typedef	std::multiset<int> set;                         
+		typedef	std::multiset<int> set;
 		/* data */
 		set					_v;
 		unsigned int		_size;
@@ -18,8 +18,11 @@ class Span
 		~Span();
 		Span	operator=(Span const &src);
 		void	addNumber(int x);
-		void	shortestSpan();
-		int		longestSpan();
+		int		shortestSpan()const;
+		int		longestSpan()const;
+		void	display()const;
+		int		getSize()const;
 };
 
+std::ostream 	& operator<<(std::ostream & out, Span const & src);
 #endif
