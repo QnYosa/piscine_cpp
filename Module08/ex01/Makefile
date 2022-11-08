@@ -1,10 +1,10 @@
-NAME			= ex00
+NAME			= ex01
 
-SRCS			= main.cpp
+SRCS			= main.cpp Span.cpp
 
 OBJS			= $(SRCS:%.cpp=%.o)
 
-INCLUDES		= easyfind.hpp easyfind.tpp
+INCLUDES		= Span.hpp
 
 CXX				= c++
 
@@ -23,6 +23,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY: re all clean fclean
+.PHONY: re clean fclean all
