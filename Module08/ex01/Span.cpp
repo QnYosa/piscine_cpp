@@ -34,7 +34,7 @@ Span 	Span::operator=(Span const &src)
 void	Span::addNumber(int x)
 {
 	if (_v.size() == _size)
-		throw (std::exception());
+		throw (Span::TooManyMembers());
 	_v.insert(x);
 }
 
@@ -42,7 +42,7 @@ int		Span::shortestSpan()const
 {
 	set::iterator	iter;
 	set::iterator	iter_min;
-	int min;
+	int min = 0;
 	int	i = 0;
 	int result = 0;
 	for (iter = _v.begin(); iter!= _v.end(); iter++)
@@ -56,6 +56,8 @@ int		Span::shortestSpan()const
 			// {
 			// 	std::cout << "iter = " << *iter << " && iter - 1 = " << (*iter) - 1 << std::endl;
 			// }
+			if (i == 1)
+				min = result;
 			if (result <= min)
 				min = result;
 			iter_min++;
@@ -68,7 +70,7 @@ int		Span::shortestSpan()const
 int		Span::longestSpan()const
 {
 	if (_v.size() <= 1)
-		throw(std::exception());
+		throw(Span::TooFewMembers());
 	return (*(_v.rbegin()) - *(_v.begin()));
 }
 
@@ -84,9 +86,34 @@ int		Span::getSize()const
 	return (_size);
 }
 
+std::multiset<int>::iterator	Span::start()
+{
+	return (_v.begin());
+}
+
+std::multiset<int>::iterator	Span::final()
+{
+	return (_v.end());
+}
+
 std::ostream 	& operator<<(std::ostream & out, Span const & src)
 {
 	src.display();
 	out << "size = " <<src.getSize() << std::endl;
 	return (out);
+}
+
+const char* Span::TooFewMembers::what() const throw()
+{
+	return ("Too FEW members\n");
+}
+
+const char* Span::TooManyMembers::what() const throw()
+{
+	return ("Too many members\n");
+}
+
+void		Span::rangeSpan(int value, int times)
+{
+	_v.insert(_v.begin(), times, value);
 }
