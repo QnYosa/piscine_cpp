@@ -1,57 +1,59 @@
 #include "Span.hpp"
-void	realTests()
-{
-	Span	sp(10000);
-	std::cout << "hello\n";
-	std::multiset<int>::iterator i;
-	// int ix = 0;
-	for(i = sp.start(); i != sp.final(); i++)
-	{
-		// ix++;
-		// std::cout<< "ix = " << ix << std::endl;
-		sp.addNumber(rand() % 10000);
-	}
-	std::cout << sp << std::endl;
-	// std::cout << sp.shortestSpan() << std::endl;
-	// std::cout << sp.longestSpan() << std::endl;
-}
-
-// int main()
-// {
-// 	Span 	sp(45);
-
-// 	for (int i = 0; i < sp.getSize() - 1; i++)
-// 		sp.addNumber(i * 2);
-// 	sp.addNumber(20);
-// 	std::cout << sp;
-// 	std::cout << "biggest span = " <<sp.longestSpan() << std::endl;
-// 	std::cout << "shortest span = " << sp.shortestSpan() << std::endl;
-// 	// realTests();
-// 	return (0);
-// }
 
 int main()
 {
 	try
 	{
 		Span sp = Span(5);
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
+		sp.addNumber(5);
+		sp.addNumber(5);
+		sp.addNumber(5);
+		sp.addNumber(5);
+		sp.addNumber(5);
+		std::cout << sp;
 		// sp.addNumber(13);
 		std::cout << "shortest span = " <<sp.shortestSpan() << std::endl;
 		std::cout << "longest span = " << sp.longestSpan() << std::endl;
-		std::cout << sp;
 	}
 	catch (Span::TooManyMembers & e)
 	{
 		std::cout << e.what();
 	}
+	catch(Span::TooFewMembers & e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	try
 	{
-		realTests();
+		Span	sp(5);
+		sp.addNumbers(5);
+		std::cout << sp;
+		Span	sp2(15000);
+		// sp.addNumber(10000);
+		// std::cout << sp;
+		std::cout << "shortest span = " <<sp.shortestSpan() << std::endl;
+		std::cout << "longest span = " << sp.longestSpan() << std::endl;
+		sp2.fillSpan(sp.getBegin(), sp.getEnd());
+		std::cout << "shortest span = " <<sp2.shortestSpan() << std::endl;
+		std::cout << "longest span = " << sp2.longestSpan() << std::endl;
+		std::cout << sp2;
+	}
+	catch(Span::TooManyMembers & e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(Span::TooFewMembers & e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Span	sp(10000);
+		sp.addNumbers(10000);
+		// std::cout << sp;
+		std::cout << "shortest span = " <<sp.shortestSpan() << std::endl;
+		std::cout << "longest span = " << sp.longestSpan() << std::endl;
+		sp.addNumber(1); // car un en trop 
 	}
 	catch(Span::TooManyMembers & e)
 	{

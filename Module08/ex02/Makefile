@@ -4,7 +4,7 @@ SRCS			= main.cpp
 
 INCLUDES		= MutantStack.hpp
 
-OBJS			= $(SRCS:.%cpp=%.o)
+OBJS			= $(SRCS:%.cpp=%.o)
 
 CXX				= c++
 
@@ -20,7 +20,7 @@ $(NAME): $(OBJS) $(INCLUDES)
 clean:
 	$(RM) $(OBJS)
 
-fclean: fclean 
+fclean: clean 
 	$(RM) $(NAME)
 
 re: fclean all

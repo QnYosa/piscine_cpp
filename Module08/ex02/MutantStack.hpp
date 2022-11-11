@@ -10,7 +10,7 @@ class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack(){std::cout << "default constructor\n";}
-		MutantStack(MutantStack const & src)
+		MutantStack(MutantStack<T> const & src):std::stack<T>(src)
 		{
 			std::cout << "copy constructor\n";
 			*this = src;

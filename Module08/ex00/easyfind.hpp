@@ -9,6 +9,6 @@
 
 
 template<typename T>
-void	easyfind(T &t, int const & to_find);
+bool	easyfind(T &t, int const & to_find);
 
 #endif

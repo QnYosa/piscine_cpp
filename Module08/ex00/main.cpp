@@ -24,16 +24,9 @@ int main()
 	for (int i = 0; i < 49; i++)
 		d.push_back(i);
 	n = 39;
-	easyfind(d, n);
-	easyfind(d, n - 14);
-	easyfind(d, n - 18);
-
-	int tab[] = {4, 9, 3};
-
-	// std::array<int>		ar;
-	// for (int i = 0; i < 595; i++)
-	// 	ar.push_back(i);
-	easyfind(tab, n);
-	easyfind(tab, n + 63);
+	std::cout << easyfind(d, n) << std::endl;
+	std::cout << easyfind(d, n - 14) << std::endl;
+	std::cout << easyfind(d, n - 18) << std::endl;
+	std::cout << easyfind(d, 180) << std::endl;
 	return (0);
 }

@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-Span::Span()
+Span::Span() : _v(), _size(5)
 {
 	std::cout << "Span default constructor\n"; 
 }
@@ -35,27 +35,33 @@ void	Span::addNumber(int x)
 {
 	if (_v.size() == _size)
 		throw (Span::TooManyMembers());
-	_v.insert(x);
+	_v.push_back(x);
+}
+
+void	Span::addNumbers(unsigned int size)
+{
+	if (_size < size + _v.size())
+		throw (Span::TooManyMembers());
+	for(unsigned int i = 0; i < size; i++)
+		_v.push_back(rand() % 10000);
 }
 
 int		Span::shortestSpan()const
 {
-	set::iterator	iter;
-	set::iterator	iter_min;
+	LisT::const_iterator	iter;
+	LisT::const_iterator	iter_min;
+	Span::LisT		L1st(this->_v);
+	L1st.sort();
 	int min = 0;
 	int	i = 0;
 	int result = 0;
-	for (iter = _v.begin(); iter!= _v.end(); iter++)
+	for (iter = L1st.begin(); iter!= L1st.end(); iter++)
 	{
 		if (i == 1)
-			iter_min = _v.begin();
+			iter_min = L1st.begin();
 		if (i != 0)
 		{
 			result = *iter - *iter_min;
-			// if (result < 2)
-			// {
-			// 	std::cout << "iter = " << *iter << " && iter - 1 = " << (*iter) - 1 << std::endl;
-			// }
 			if (i == 1)
 				min = result;
 			if (result <= min)
@@ -71,12 +77,14 @@ int		Span::longestSpan()const
 {
 	if (_v.size() <= 1)
 		throw(Span::TooFewMembers());
-	return (*(_v.rbegin()) - *(_v.begin()));
+	Span::LisT		L1st(this->_v);
+	L1st.sort();
+	return (*(L1st.rbegin()) - *(L1st.begin()));
 }
 
 void	Span::display()const
 {
-	set::iterator	i;
+	LisT::const_iterator	i;
 	for (i = _v.begin(); i != _v.end(); i++)
 		std::cout << *i << std::endl;
 }
@@ -86,14 +94,9 @@ int		Span::getSize()const
 	return (_size);
 }
 
-std::multiset<int>::iterator	Span::start()
+Span::LisT	Span::getV()
 {
-	return (_v.begin());
-}
-
-std::multiset<int>::iterator	Span::final()
-{
-	return (_v.end());
+	return (_v);
 }
 
 std::ostream 	& operator<<(std::ostream & out, Span const & src)
@@ -113,7 +116,12 @@ const char* Span::TooManyMembers::what() const throw()
 	return ("Too many members\n");
 }
 
-void		Span::rangeSpan(int value, int times)
+Span::LisT::iterator		Span::getBegin()
 {
-	_v.insert(_v.begin(), times, value);
+	return (_v.begin());
+}
+
+Span::LisT::iterator		Span::getEnd()
+{
+	return (_v.end());
 }
